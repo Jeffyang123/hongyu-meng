@@ -6,6 +6,19 @@ interface Props {
 const { pub, lang } = Astro.props;
 const t = (zh, en) => lang === 'zh' ? zh : en;
 
+// 统一 base 前缀，GitHub Pages 上为 /hongyu-meng/
+const base = import.meta.env.BASE_URL;
+
+// 智能处理链接：
+//   - 完整外链（http/https/mailto）原样返回
+//   - 以 / 开头的本地路径加 base 前缀
+const link = (url) => {
+  if (!url) return url;
+  const s = String(url);
+  if (/^(https?:|mailto:|tel:)/i.test(s)) return s;
+  return `${base}${s.replace(/^\//, '')}`;
+};
+
 const authorList = Array.isArray(pub.authors) ? pub.authors.join(', ') : pub.authors;
 ---
 
@@ -29,11 +42,11 @@ const authorList = Array.isArray(pub.authors) ? pub.authors.join(', ') : pub.aut
     </p>
   )}
   <div class="flex flex-wrap gap-3 text-sm">
-    {pub.doi && <a href={pub.doi} class="link-accent" target="_blank" rel="noopener">DOI</a>}
-    {pub.pdf && <a href={pub.pdf} class="link-accent" target="_blank" rel="noopener">PDF</a>}
-    {pub.code && <a href={pub.code} class="link-accent" target="_blank" rel="noopener">Code</a>}
-    {pub.data && <a href={pub.data} class="link-accent" target="_blank" rel="noopener">Data</a>}
-    {pub.pubmed && <a href={pub.pubmed} class="link-accent" target="_blank" rel="noopener">PubMed</a>}
-    {pub.scholar && <a href={pub.scholar} class="link-accent" target="_blank" rel="noopener">Scholar</a>}
+    {pub.doi     && <a href={link(pub.doi)}     class="link-accent" target="_blank" rel="noopener">DOI</a>}
+    {pub.pdf     && <a href={link(pub.pdf)}     class="link-accent" target="_blank" rel="noopener">PDF</a>}
+    {pub.code    && <a href={link(pub.code)}    class="link-accent" target="_blank" rel="noopener">Code</a>}
+    {pub.data    && <a href={link(pub.data)}    class="link-accent" target="_blank" rel="noopener">Data</a>}
+    {pub.pubmed  && <a href={link(pub.pubmed)}  class="link-accent" target="_blank" rel="noopener">PubMed</a>}
+    {pub.scholar && <a href={link(pub.scholar)} class="link-accent" target="_blank" rel="noopener">Scholar</a>}
   </div>
 </article>

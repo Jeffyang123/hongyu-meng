@@ -10,6 +10,12 @@ import newsData from '../../data/news.yml';
 import researchData from '../../data/research.yml';
 
 const lang = 'en';
+
+// 统一 base 前缀，GitHub Pages 上为 /hongyu-meng/
+const base = import.meta.env.BASE_URL;
+// 把 YAML 中以 / 开头的资源路径加上 base
+const asset = (p) => (p ? `${base}${String(p).replace(/^\//, '')}` : p);
+
 const pi = membersData[0];
 const teamMembers = membersData.slice(1, 7);
 const recentPubs = publicationsData.slice(0, 3);
@@ -23,7 +29,7 @@ const kwGridClass = kwCount <= 2 ? 'grid-cols-2'
   : 'grid-cols-2 lg:grid-cols-4';
 ---
 
-<BaseLayout lang={lang} current="/">
+<BaseLayout lang={lang} current="/en/">
   <section class="relative overflow-hidden neural-bg">
     <div class="absolute inset-0 grid-pattern opacity-50"></div>
     <div class="container-content relative py-20 lg:py-28">
@@ -36,15 +42,20 @@ const kwGridClass = kwCount <= 2 ? 'grid-cols-2'
           <p class="text-lg lg:text-xl text-primary/60 mb-2">{siteData.title_zh}</p>
           <p class="text-base text-primary/70 mb-8 leading-relaxed max-w-lg">{siteData.description_en}</p>
           <div class="flex flex-wrap gap-3">
-            <a href="/en/research" class="btn-primary">Research <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" /></svg></a>
-            <a href="/en/publications" class="btn-outline">Publications</a>
-            <a href="/en/join" class="btn-accent">Join Us</a>
+            <a href={`${base}en/research/`} class="btn-primary">Research <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" /></svg></a>
+            <a href={`${base}en/publications/`} class="btn-outline">Publications</a>
+            <a href={`${base}en/join/`} class="btn-accent">Join Us</a>
           </div>
         </div>
         <div class="flex justify-center lg:justify-end fade-in-up">
           <div class="relative">
             <div class="w-64 h-64 lg:w-80 lg:h-80 rounded-2xl overflow-hidden shadow-card-hover bg-primary/5">
-              <img src={pi.photo} alt={pi.name.en} class="w-full h-full object-cover" onerror="this.src='/images/people/placeholder.svg'" />
+              <img
+                src={asset(pi.photo)}
+                alt={pi.name.en}
+                class="w-full h-full object-cover"
+                onerror={`this.src='${base}images/people/placeholder.svg'`}
+              />
             </div>
             <div class="absolute -bottom-4 -left-4 card px-5 py-3">
               <p class="font-serif font-bold text-primary">{pi.name.en}</p>
@@ -64,7 +75,7 @@ const kwGridClass = kwCount <= 2 ? 'grid-cols-2'
             {kw.image ? (
               <div class="mb-3 rounded-lg overflow-hidden bg-primary/5" style="aspect-ratio: 16/9">
                 <img
-                  src={kw.image}
+                  src={asset(kw.image)}
                   alt={kw.en}
                   class={`w-full h-full object-${kw.image_size || 'cover'}`}
                   onerror="this.style.display='none';"
@@ -83,7 +94,7 @@ const kwGridClass = kwCount <= 2 ? 'grid-cols-2'
     <div class="container-content">
       <div class="flex items-end justify-between mb-8">
         <div><h2 class="section-title">Recent Publications</h2><p class="section-subtitle">Selected works</p></div>
-        <a href="/en/publications" class="link-accent text-sm font-medium">View all →</a>
+        <a href={`${base}en/publications/`} class="link-accent text-sm font-medium">View all →</a>
       </div>
       <div class="grid md:grid-cols-3 gap-6">{recentPubs.map(pub => <PublicationCard pub={pub} lang={lang} />)}</div>
     </div>
@@ -93,7 +104,7 @@ const kwGridClass = kwCount <= 2 ? 'grid-cols-2'
     <div class="container-content">
       <div class="flex items-end justify-between mb-8">
         <div><h2 class="section-title">Our Team</h2><p class="section-subtitle">Lab members</p></div>
-        <a href="/en/people" class="link-accent text-sm font-medium">View all →</a>
+        <a href={`${base}en/people/`} class="link-accent text-sm font-medium">View all →</a>
       </div>
       <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">
         <MemberCard member={pi} lang={lang} isPI={true} />
@@ -106,7 +117,7 @@ const kwGridClass = kwCount <= 2 ? 'grid-cols-2'
     <div class="container-content">
       <div class="flex items-end justify-between mb-8">
         <div><h2 class="section-title">Latest News</h2><p class="section-subtitle">Updates</p></div>
-        <a href="/en/news" class="link-accent text-sm font-medium">View all →</a>
+        <a href={`${base}en/news/`} class="link-accent text-sm font-medium">View all →</a>
       </div>
       <div class="grid md:grid-cols-3 gap-6">{recentNews.map(item => <NewsCard item={item} lang={lang} />)}</div>
     </div>
@@ -118,7 +129,7 @@ const kwGridClass = kwCount <= 2 ? 'grid-cols-2'
       <p class="text-lg text-white/70 mb-8 max-w-2xl mx-auto">
         We are recruiting postdocs, PhD and master's students, research assistants, and undergraduate researchers.
       </p>
-      <a href="/en/join" class="btn-accent inline-flex items-center gap-2">
+      <a href={`${base}en/join/`} class="btn-accent inline-flex items-center gap-2">
         View positions <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
       </a>
     </div>

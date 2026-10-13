@@ -10,6 +10,12 @@ import newsData from '../data/news.yml';
 import researchData from '../data/research.yml';
 
 const lang = 'zh';
+
+// 统一 base 前缀，GitHub Pages 上为 /hongyu-meng/
+const base = import.meta.env.BASE_URL;
+// 把 YAML 中以 / 开头的资源路径加上 base
+const asset = (p) => (p ? `${base}${String(p).replace(/^\//, '')}` : p);
+
 const pi = membersData[0];
 const teamMembers = membersData.slice(1, 7);
 const recentPubs = publicationsData.slice(0, 3);
@@ -41,22 +47,22 @@ const kwGridClass = kwCount <= 2 ? 'grid-cols-2'
             {siteData.description_zh}
           </p>
           <div class="flex flex-wrap gap-3">
-            <a href="/research" class="btn-primary">
+            <a href={`${base}research/`} class="btn-primary">
               研究方向
               <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
             </a>
-            <a href="/publications" class="btn-outline">Publications</a>
-            <a href="/join" class="btn-accent">加入我们</a>
+            <a href={`${base}publications/`} class="btn-outline">Publications</a>
+            <a href={`${base}join/`} class="btn-accent">加入我们</a>
           </div>
         </div>
         <div class="flex justify-center lg:justify-end fade-in-up">
           <div class="relative">
             <div class="w-64 h-64 lg:w-80 lg:h-80 rounded-2xl overflow-hidden shadow-card-hover bg-primary/5">
               <img
-                src={pi.photo}
+                src={asset(pi.photo)}
                 alt={pi.name.zh}
                 class="w-full h-full object-cover"
-                onerror="this.src='/images/people/placeholder.svg'"
+                onerror={`this.src='${base}images/people/placeholder.svg'`}
               />
             </div>
             <div class="absolute -bottom-4 -left-4 card px-5 py-3">
@@ -76,9 +82,9 @@ const kwGridClass = kwCount <= 2 ? 'grid-cols-2'
         {researchData.keywords.map(kw => (
           <div class="text-center p-4 rounded-card bg-surface overflow-hidden">
             {kw.image ? (
-              <div class="mb-3 rounded-lg overflow-hidden bg-primary/5" style={`aspect-ratio: 16/9`}>
+              <div class="mb-3 rounded-lg overflow-hidden bg-primary/5" style="aspect-ratio: 16/9;">
                 <img
-                  src={kw.image}
+                  src={asset(kw.image)}
                   alt={kw.zh}
                   class={`w-full h-full object-${kw.image_size || 'cover'}`}
                   onerror="this.style.display='none';"
@@ -101,7 +107,7 @@ const kwGridClass = kwCount <= 2 ? 'grid-cols-2'
           <h2 class="section-title">近期论文</h2>
           <p class="section-subtitle">Recent Publications</p>
         </div>
-        <a href="/publications" class="link-accent text-sm font-medium">查看全部 →</a>
+        <a href={`${base}publications/`} class="link-accent text-sm font-medium">查看全部 →</a>
       </div>
       <div class="grid md:grid-cols-3 gap-6">
         {recentPubs.map(pub => <PublicationCard pub={pub} lang={lang} />)}
@@ -117,7 +123,7 @@ const kwGridClass = kwCount <= 2 ? 'grid-cols-2'
           <h2 class="section-title">团队成员</h2>
           <p class="section-subtitle">Our Team</p>
         </div>
-        <a href="/people" class="link-accent text-sm font-medium">查看全部 →</a>
+        <a href={`${base}people/`} class="link-accent text-sm font-medium">查看全部 →</a>
       </div>
       <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">
         <MemberCard member={pi} lang={lang} isPI={true} />
@@ -134,7 +140,7 @@ const kwGridClass = kwCount <= 2 ? 'grid-cols-2'
           <h2 class="section-title">新闻动态</h2>
           <p class="section-subtitle">Latest News</p>
         </div>
-        <a href="/news" class="link-accent text-sm font-medium">查看全部 →</a>
+        <a href={`${base}news/`} class="link-accent text-sm font-medium">查看全部 →</a>
       </div>
       <div class="grid md:grid-cols-3 gap-6">
         {recentNews.map(item => <NewsCard item={item} lang={lang} />)}
@@ -149,7 +155,7 @@ const kwGridClass = kwCount <= 2 ? 'grid-cols-2'
       <p class="text-lg text-white/70 mb-8 max-w-2xl mx-auto">
         课题组长期招聘博士后、博士研究生、硕士研究生、研究助理及本科毕设学生，欢迎有志于计算神经科学与类脑智能的同学加入。
       </p>
-      <a href="/join" class="btn-accent inline-flex items-center gap-2">
+      <a href={`${base}join/`} class="btn-accent inline-flex items-center gap-2">
         查看招聘详情
         <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
       </a>

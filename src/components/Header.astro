@@ -7,9 +7,12 @@ interface Props {
 }
 const { lang, current } = Astro.props;
 
-// 统一 base 前缀：本地是 "/"，GitHub Pages 是 "/hongyu-meng/"
+// 统一 base 前缀：本地为 "/"，GitHub Pages 为 "/hongyu-meng/"
 const base = import.meta.env.BASE_URL;
+// 给 YAML 中以 / 开头的资源路径加 base
+const asset = (p) => (p ? `${base}${String(p).replace(/^\//, '')}` : p);
 
+// href 用相对片段，拼接时统一加 base 和语言前缀
 const navItems = [
   { id: 'home',         zh: '首页',           en: 'Home',         href: '' },
   { id: 'research',     zh: '研究方向',       en: 'Research',     href: 'research/' },
@@ -20,33 +23,37 @@ const navItems = [
   { id: 'join',         zh: '加入我们',       en: 'Join Us',      href: 'join/' },
 ];
 
-// 英文前缀：中文页无前缀，英文页加 en/
-const prefix = lang === 'en' ? 'en/' : '';
+const isEn = lang === 'en';
+const prefix = isEn ? 'en/' : '';
 
-// 语言切换路径：以当前页面相对 base 的路径为准
-// current 传进来的是不含 base 的路径，例如 "/"、"/people/"、"/en/people/"
-const relativeCurrent = current.replace(/^\/+/, ''); // 去掉开头斜杠
-const switchLangPath =
-  lang === 'zh'
-    ? `${base}en/${relativeCurrent}`.replace(/\/+$/, '/')
-    : `${base}${relativeCurrent.replace(/^en\//, '')}`.replace(/\/+$/, '/');
+// 从 current 提取相对路径：去 base、去 /en/、去首尾斜杠
+const currentRel = current
+  .replace(/^\/+/, '')
+  .replace(/^en\/?/, '')
+  .replace(/\/+$/, '');
 
-// Logo 配置：给图片路径加 base
-const labLogo = siteData.lab_logo ? `${base}${siteData.lab_logo.replace(/^\/+/, '')}` : null;
+// 判断当前导航项是否激活
+const isActive = (item) => {
+  const itemKey = item.href.replace(/\/+$/, '');
+  return currentRel === itemKey;
+};
+
+// 语言切换路径：
+//  中文页 → /hongyu-meng/en/xxx/
+//  英文页 → /hongyu-meng/xxx/
+const switchLangPath = isEn
+  ? `${base}${currentRel}${currentRel ? '/' : ''}`
+  : `${base}en/${currentRel}${currentRel ? '/' : ''}`;
+
+// V2: Logo 配置，加上 base 前缀
+const labLogo = siteData.lab_logo ? asset(siteData.lab_logo) : null;
 const logoW = siteData.lab_logo_width || 40;
 const logoH = siteData.lab_logo_height || 40;
-
-// 判断当前导航项是否激活：把 current 规范化后与完整路径比较
-const normCurrent = `/${relativeCurrent.replace(/^en\//, '').replace(/\/+$/, '')}/`;
-const isActive = (item) => {
-  const target = `/${item.href.replace(/\/+$/, '')}/`;
-  return normCurrent === target || (item.href === '' && normCurrent === '//');
-};
 ---
 
 <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-primary/5">
   <div class="container-content flex items-center justify-between h-16">
-    <!-- Logo -->
+    <!-- Logo：V2 支持图片 Logo，无图片时回退到默认 SVG -->
     <a href={`${base}`} class="flex items-center gap-3 shrink-0">
       {labLogo ? (
         <img

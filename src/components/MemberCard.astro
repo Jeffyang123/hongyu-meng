@@ -5,20 +5,29 @@ interface Props {
   isPI?: boolean;
 }
 const { member, lang, isPI = false } = Astro.props;
+
+// 统一 base 前缀，GitHub Pages 上为 /hongyu-meng/
+const base = import.meta.env.BASE_URL;
+// 给 YAML 中以 / 开头的资源路径加 base
+const asset = (p) => (p ? `${base}${String(p).replace(/^\//, '')}` : p);
+
 const name = lang === 'zh' ? member.name.zh : member.name.en;
 const role = lang === 'zh' ? member.role.zh : member.role.en;
 const research = lang === 'zh' ? member.research?.zh : member.research?.en;
 const bio = lang === 'zh' ? member.bio?.zh : member.bio?.en;
+
+const photo = asset(member.photo);
+const placeholder = `${base}images/people/placeholder.svg`;
 ---
 
 <article class={`card card-hover p-6 text-center ${isPI ? 'ring-2 ring-accent/30' : ''}`}>
   <div class="relative w-28 h-28 mx-auto mb-4">
     <img
-      src={member.photo}
+      src={photo}
       alt={name}
       class="w-28 h-28 rounded-full object-cover border-2 border-surface"
       loading="lazy"
-      onerror="this.src='/images/people/placeholder.svg'"
+      onerror={`this.src='${placeholder}'`}
     />
     {isPI && (
       <span class="absolute -bottom-1 -right-1 px-2 py-0.5 bg-accent text-white text-xs rounded-full font-medium">
