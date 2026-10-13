@@ -27,18 +27,18 @@ const instLogoH = siteData.institute_logo_height || 40;
         <h3 class="text-white text-lg font-serif font-bold mb-3">
           {lang === 'zh' ? siteData.title_zh : siteData.title_en}
         </h3>
-        <!-- V2: 单位 Logo 图片（可选） -->
+        <!-- V2: 单位 Logo 图片（可选），白底提升对比度 -->
         {instituteLogo ? (
           <img
             src={instituteLogo}
             alt={lang === 'zh' ? siteData.institute_zh : siteData.institute_en}
             width={instLogoW}
             height={instLogoH}
-            class="mb-3 rounded object-contain bg-white/5 p-1"
+            class="mb-3 rounded object-contain bg-white p-2"
             onerror="this.style.display='none';"
           />
         ) : null}
-        <p class="text-sm text-white/60 mb-2">
+        <p class="text-base text-white/70 mb-2">
           {lang === 'zh' ? siteData.institute_zh : siteData.institute_en}
         </p>
       </div>

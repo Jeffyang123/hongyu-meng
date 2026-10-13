@@ -4,6 +4,12 @@ import MemberCard from '../components/MemberCard.astro';
 import membersData from '../data/members.yml';
 
 const lang = 'zh';
+
+// 统一 base 前缀，GitHub Pages 上为 /hongyu-meng/
+const base = import.meta.env.BASE_URL;
+// 给 YAML 中以 / 开头的资源路径加 base
+const asset = (p) => (p ? `${base}${String(p).replace(/^\//, '')}` : p);
+
 const pi = membersData[0];
 const currentMembers = membersData.filter(m => m.status === 'current' && m.id !== pi.id);
 ---
@@ -24,10 +30,10 @@ const currentMembers = membersData.filter(m => m.status === 'current' && m.id !=
         <div class="flex flex-col md:flex-row gap-8">
           <div class="shrink-0">
             <img
-              src={pi.photo}
+              src={asset(pi.photo)}
               alt={pi.name.zh}
               class="w-40 h-40 rounded-2xl object-cover"
-              onerror="this.src='/images/people/placeholder.svg'"
+              onerror={`this.src='${base}images/people/placeholder.svg'`}
             />
           </div>
           <div class="flex-1">
