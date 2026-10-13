@@ -1,0 +1,81 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import siteData from '../../data/site.yml';
+const lang = 'en';
+const positions = [
+  { title: 'Postdoc', count: '2', req: 'PhD in computational neuroscience, machine learning, or related fields. Experience in electrophysiology or computational modeling preferred.' },
+  { title: 'PhD Student', count: '3', req: 'Bachelor\'s or master\'s degree in mathematics, physics, computer science, neuroscience, or related fields.' },
+  { title: 'Master Student', count: '2', req: 'Bachelor\'s degree with programming and mathematical foundation.' },
+  { title: 'Research Assistant', count: '1-2', req: 'Bachelor\'s degree or above. Responsible for data analysis and platform maintenance.' },
+  { title: 'Undergraduate / Intern', count: 'Open', req: 'Current undergraduate students welcome for thesis projects or short-term internships.' },
+];
+const faqs = [
+  { q: 'What background is required?', a: 'Computational neuroscience, applied mathematics, physics, computer science, or electrical engineering. Passion for brain computation and brain-inspired AI is key.' },
+  { q: 'What are the English requirements?', a: 'Ability to read and write English papers is required. PhD students and postdocs should be able to present at international conferences.' },
+  { q: 'What is the research environment like?', a: 'The lab is based at GIIST with excellent computing resources and experimental platforms, and maintains close collaborations with labs worldwide.' },
+  { q: 'What is the application process?', a: 'Send your CV (including research experience and representative work) to the recruitment email. Interviews will be arranged after initial review.' },
+];
+---
+<BaseLayout lang={lang} current="/join" title="Join Us">
+  <section class="neural-bg border-b border-primary/5">
+    <div class="container-content py-16">
+      <h1 class="text-4xl lg:text-5xl font-serif font-bold text-primary mb-4">Join Us</h1>
+      <p class="text-lg text-primary/60 max-w-2xl">We welcome passionate researchers and students to join our lab!</p>
+    </div>
+  </section>
+  <section class="py-16">
+    <div class="container-content">
+      <h2 class="section-title">Open Positions</h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        {positions.map(p => (
+          <div class="card card-hover p-6">
+            <div class="flex items-center justify-between mb-3">
+              <h3 class="text-xl font-serif font-bold text-primary">{p.title}</h3>
+              <span class="tag">{p.count}</span>
+            </div>
+            <p class="text-primary/70 leading-relaxed">{p.req}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+  <section class="py-16 bg-white border-y border-primary/5">
+    <div class="container-content">
+      <h2 class="section-title">How to Apply</h2>
+      <div class="card p-8 max-w-2xl">
+        <ol class="space-y-4">
+          <li class="flex gap-4"><span class="w-8 h-8 rounded-full bg-accent/10 text-accent-dark font-bold flex items-center justify-center shrink-0">1</span><div><p class="font-medium text-primary mb-1">Prepare Materials</p><p class="text-sm text-primary/60">CV (education, research experience, representative work) and a research statement (1-2 pages).</p></div></li>
+          <li class="flex gap-4"><span class="w-8 h-8 rounded-full bg-accent/10 text-accent-dark font-bold flex items-center justify-center shrink-0">2</span><div><p class="font-medium text-primary mb-1">Send Email</p><p class="text-sm text-primary/60">Send to <a href={`mailto:${siteData.email}`} class="link-accent">{siteData.email}</a> with subject: <strong>[Position] Name - Institution</strong></p></div></li>
+          <li class="flex gap-4"><span class="w-8 h-8 rounded-full bg-accent/10 text-accent-dark font-bold flex items-center justify-center shrink-0">3</span><div><p class="font-medium text-primary mb-1">Interview</p><p class="text-sm text-primary/60">Online or in-person interview to discuss research interests and fit.</p></div></li>
+          <li class="flex gap-4"><span class="w-8 h-8 rounded-full bg-accent/10 text-accent-dark font-bold flex items-center justify-center shrink-0">4</span><div><p class="font-medium text-primary mb-1">Offer</p><p class="text-sm text-primary/60">Formal offer letter and onboarding assistance.</p></div></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+  <section class="py-16">
+    <div class="container-content">
+      <h2 class="section-title">FAQ</h2>
+      <div class="space-y-4 max-w-3xl">
+        {faqs.map(faq => (
+          <details class="card p-6 group">
+            <summary class="font-serif font-bold text-primary cursor-pointer flex items-center justify-between">
+              {faq.q}
+              <svg class="w-5 h-5 text-accent transition-transform group-open:rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" /></svg>
+            </summary>
+            <p class="text-primary/70 mt-3 leading-relaxed">{faq.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+  <section class="py-16 bg-primary text-white">
+    <div class="container-content text-center">
+      <h2 class="text-2xl font-serif font-bold mb-4">Ready to join us?</h2>
+      <p class="text-white/70 mb-6">Send your application to start your research journey.</p>
+      <a href={`mailto:${siteData.email}`} class="btn-accent">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1 0 2 1 2 2v12c0 1-1 2-2 2H4c-1 0-2-1-2-2V6c0-1 1-2 2-2z" /><polyline points="22,6 12,13 2,6" /></svg>
+        {siteData.email}
+      </a>
+    </div>
+  </section>
+</BaseLayout>

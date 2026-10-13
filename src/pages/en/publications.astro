@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PublicationCard from '../../components/PublicationCard.astro';
+import publicationsData from '../../data/publications.yml';
+const lang = 'en';
+const pubsByYear = {};
+publicationsData.forEach(p => { if (!pubsByYear[p.year]) pubsByYear[p.year] = []; pubsByYear[p.year].push(p); });
+const years = Object.keys(pubsByYear).sort((a, b) => b - a);
+---
+<BaseLayout lang={lang} current="/publications" title="Publications">
+  <section class="neural-bg border-b border-primary/5">
+    <div class="container-content py-16">
+      <h1 class="text-4xl lg:text-5xl font-serif font-bold text-primary mb-4">Publications</h1>
+      <p class="text-lg text-primary/60">研究成果</p>
+    </div>
+  </section>
+  <section class="py-16">
+    <div class="container-content">
+      {years.map(year => (
+        <div class="mb-12">
+          <h2 class="text-2xl font-serif font-bold text-accent-dark mb-6 border-l-4 border-accent pl-4">{year}</h2>
+          <div class="grid md:grid-cols-2 gap-6">{pubsByYear[year].map(pub => <PublicationCard pub={pub} lang={lang} />)}</div>
+        </div>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

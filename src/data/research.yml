@@ -1,0 +1,98 @@
+mission:
+  zh: 我们的研究旨在揭示大脑如何通过预测编码机制实现高效感知与学习，并将这些原理转化为新一代类脑智能算法与神经形态计算系统。
+  en: Our research aims to uncover how the brain achieves efficient perception and learning through predictive coding, and to translate these principles into next-generation brain-inspired algorithms and neuromorphic computing systems.
+
+goals:
+  - title:
+      zh: 预测编码的神经科学机制
+      en: Neural mechanisms of predictive coding
+    desc:
+      zh: 研究内部表征、预测误差在神经元类型、局部环路和跨脑区网络中的产生与传播。
+      en: How internal representations and prediction errors arise across cell types, circuits, and brain-wide networks.
+    icon: brain
+    # V2: 可选图片（设为 null 则不显示图片，只显示图标）
+    image: null
+    image_size: cover  # cover | contain | auto
+
+  - title:
+      zh: 预测编码与类脑智能
+      en: Predictive coding and brain-inspired AI
+    desc:
+      zh: 融合预测编码、局部学习规则与脉冲神经网络，推动类脑芯片与智能系统应用。
+      en: Integrating predictive coding, local learning, and SNNs for neuromorphic chips and intelligent systems.
+    icon: chip
+    image: null
+    image_size: cover
+
+sub_directions:
+  - title:
+      zh: 预测误差计算
+      en: Prediction error computation
+    desc:
+      zh: 研究大脑如何计算和编码预测误差，包括自上而下与自下而上信号的整合机制。
+      en: How the brain computes and encodes prediction errors, including top-down and bottom-up signal integration.
+    # V2: 可选图片。将图片放入 public/images/research/ 并设置路径。
+    # 设为 null 则不显示图片，只显示文字卡片。
+    image: null
+    image_size: cover  # cover | contain | auto
+
+  - title:
+      zh: 神经元类型机制
+      en: Cell-type-specific mechanisms
+    desc:
+      zh: 探索不同神经元类型（兴奋性、抑制性、VIP、SST等）在预测编码中的特异性作用。
+      en: Exploring the specific roles of different cell types (excitatory, inhibitory, VIP, SST) in predictive coding.
+    image: null
+    image_size: cover
+
+  - title:
+      zh: 神经动力学
+      en: Neural dynamics
+    desc:
+      zh: 研究皮层环路中的非线性动力学过程如何支持预测与误差信号的生成。
+      en: How nonlinear dynamical processes in cortical circuits support prediction and error signal generation.
+    image: null
+    image_size: cover
+
+  - title:
+      zh: 脉冲神经网络
+      en: Spiking neural networks
+    desc:
+      zh: 构建基于脉冲计算的神经网络模型，实现局部学习规则与高效时空信息处理。
+      en: Building spiking neural network models with local learning rules for efficient spatiotemporal processing.
+    image: null
+    image_size: cover
+
+  - title:
+      zh: 神经形态计算
+      en: Neuromorphic computing
+    desc:
+      zh: 在类脑芯片上实现预测编码算法，探索低功耗、高效率的智能计算范式。
+      en: Implementing predictive coding algorithms on neuromorphic chips for low-power, high-efficiency computing.
+    image: null
+    image_size: cover
+
+  - title:
+      zh: 具身智能验证
+      en: Embodied intelligence validation
+    desc:
+      zh: 在机器人平台和虚拟环境中验证类脑算法的感知与决策能力。
+      en: Validating brain-inspired algorithms on robotic platforms and virtual environments.
+    image: null
+    image_size: cover
+
+# === V2: 关键词区域支持可选图片 ===
+# 每个关键词可以附带一张图片（显示在文字上方）。
+# image: null  → 不显示图片，只显示文字（与 V1 行为一致）
+# image: /images/research/xxx.jpg  → 显示图片
+# image_size: cover  → 图片填满容器（可能裁切）
+# image_size: contain → 图片完整显示（可能留白）
+# image_size: auto   → 图片按原始比例显示
+# 数量可增减：添加或删除条目即可，页面网格自动适配
+keywords:
+  - { zh: 预测编码, en: Predictive Coding, image: null, image_size: cover }
+  - { zh: 神经动力学, en: Neural Dynamics, image: null, image_size: cover }
+  - { zh: 脉冲神经网络, en: Spiking Neural Networks, image: null, image_size: cover }
+  - { zh: 神经形态计算, en: Neuromorphic Computing, image: null, image_size: cover }
+  # 增减示例：取消下面注释即可添加第5个方向
+  # - { zh: 具身智能, en: Embodied AI, image: null, image_size: cover }

@@ -1,0 +1,22 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import NewsCard from '../../components/NewsCard.astro';
+import newsData from '../../data/news.yml';
+const lang = 'en';
+const sortedNews = [...newsData].sort((a, b) => new Date(b.date) - new Date(a.date));
+---
+<BaseLayout lang={lang} current="/news" title="News">
+  <section class="neural-bg border-b border-primary/5">
+    <div class="container-content py-16">
+      <h1 class="text-4xl lg:text-5xl font-serif font-bold text-primary mb-4">News & Updates</h1>
+      <p class="text-lg text-primary/60">新闻动态</p>
+    </div>
+  </section>
+  <section class="py-16">
+    <div class="container-content">
+      <div class="grid md:grid-cols-2 gap-6">
+        {sortedNews.map(item => <NewsCard item={item} lang={lang} showBody={true} />)}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

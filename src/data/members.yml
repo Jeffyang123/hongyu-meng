@@ -1,0 +1,186 @@
+- id: meng-hongyu
+  name: { zh: 孟洪宇, en: Hongyu Meng }
+  role: { zh: 研究员、课题组组长, en: Principal Investigator }
+  photo: /images/people/meng-hongyu.jpg
+  photo_life: /images/people/meng-hongyu-life.jpg
+  research:
+    zh: 预测编码、计算神经科学、类脑智能
+    en: Predictive coding, computational neuroscience, brain-inspired AI
+  bio:
+    zh: 北京大学应用数学学士，西北大学应用数学博士，纽约大学神经科学中心博士后，2026年8月起任广东省智能科学与技术研究院研究员。
+    en: BS in Applied Mathematics from Peking University, PhD from Northwestern University, postdoctoral research at NYU Neuroscience Center, Principal Investigator at GIIST since August 2026.
+  links:
+    scholar: ""
+    github: ""
+    orcid: ""
+    email: menghy@example.edu.cn
+  status: current
+  order: 1
+
+- id: member-01
+  name: { zh: 成员01, en: Member 01 }
+  role: { zh: 博士后, en: Postdoc }
+  photo: /images/people/placeholder-1.jpg
+  research:
+    zh: 预测误差计算
+    en: Prediction error computation
+  bio:
+    zh: 研究方向占位，请替换为真实信息。
+    en: Placeholder bio, please replace with real information.
+  links: { scholar: "", github: "", orcid: "", email: "" }
+  status: current
+  order: 2
+
+- id: member-02
+  name: { zh: 成员02, en: Member 02 }
+  role: { zh: 博士后, en: Postdoc }
+  photo: /images/people/placeholder-2.jpg
+  research:
+    zh: 神经动力学
+    en: Neural dynamics
+  bio:
+    zh: 研究方向占位，请替换为真实信息。
+    en: Placeholder bio, please replace with real information.
+  links: { scholar: "", github: "", orcid: "", email: "" }
+  status: current
+  order: 3
+
+- id: member-03
+  name: { zh: 成员03, en: Member 03 }
+  role: { zh: 博士研究生, en: PhD Student }
+  photo: /images/people/placeholder-3.jpg
+  research:
+    zh: 脉冲神经网络
+    en: Spiking neural networks
+  bio:
+    zh: 研究方向占位，请替换为真实信息。
+    en: Placeholder bio, please replace with real information.
+  links: { scholar: "", github: "", orcid: "", email: "" }
+  status: current
+  order: 4
+
+- id: member-04
+  name: { zh: 成员04, en: Member 04 }
+  role: { zh: 博士研究生, en: PhD Student }
+  photo: /images/people/placeholder-4.jpg
+  research:
+    zh: 神经形态计算
+    en: Neuromorphic computing
+  bio:
+    zh: 研究方向占位，请替换为真实信息。
+    en: Placeholder bio, please replace with real information.
+  links: { scholar: "", github: "", orcid: "", email: "" }
+  status: current
+  order: 5
+
+- id: member-05
+  name: { zh: 成员05, en: Member 05 }
+  role: { zh: 硕士研究生, en: Master Student }
+  photo: /images/people/placeholder-5.jpg
+  research:
+    zh: 预测编码建模
+    en: Predictive coding modeling
+  bio:
+    zh: 研究方向占位，请替换为真实信息。
+    en: Placeholder bio, please replace with real information.
+  links: { scholar: "", github: "", orcid: "", email: "" }
+  status: current
+  order: 6
+
+- id: member-06
+  name: { zh: 成员06, en: Member 06 }
+  role: { zh: 硕士研究生, en: Master Student }
+  photo: /images/people/placeholder-6.jpg
+  research:
+    zh: 具身智能验证
+    en: Embodied intelligence validation
+  bio:
+    zh: 研究方向占位，请替换为真实信息。
+    en: Placeholder bio, please replace with real information.
+  links: { scholar: "", github: "", orcid: "", email: "" }
+  status: current
+  order: 7
+
+- id: member-07
+  name: { zh: 成员07, en: Member 07 }
+  role: { zh: 研究助理, en: Research Assistant }
+  photo: /images/people/placeholder-7.jpg
+  research:
+    zh: 电生理数据分析
+    en: Electrophysiology data analysis
+  bio:
+    zh: 研究方向占位，请替换为真实信息。
+    en: Placeholder bio, please replace with real information.
+  links: { scholar: "", github: "", orcid: "", email: "" }
+  status: current
+  order: 8
+
+- id: member-08
+  name: { zh: 成员08, en: Member 08 }
+  role: { zh: 研究助理, en: Research Assistant }
+  photo: /images/people/placeholder-8.jpg
+  research:
+    zh: 神经影像数据处理
+    en: Neuroimaging data processing
+  bio:
+    zh: 研究方向占位，请替换为真实信息。
+    en: Placeholder bio, please replace with real information.
+  links: { scholar: "", github: "", orcid: "", email: "" }
+  status: current
+  order: 9
+
+- id: member-09
+  name: { zh: 成员09, en: Member 09 }
+  role: { zh: 本科毕设, en: Undergraduate Researcher }
+  photo: /images/people/placeholder-9.jpg
+  research:
+    zh: 类脑算法实现
+    en: Brain-inspired algorithm implementation
+  bio:
+    zh: 研究方向占位，请替换为真实信息。
+    en: Placeholder bio, please replace with real information.
+  links: { scholar: "", github: "", orcid: "", email: "" }
+  status: current
+  order: 10
+
+- id: member-10
+  name: { zh: 成员10, en: Member 10 }
+  role: { zh: 本科毕设, en: Undergraduate Researcher }
+  photo: /images/people/placeholder-10.jpg
+  research:
+    zh: 仿真平台开发
+    en: Simulation platform development
+  bio:
+    zh: 研究方向占位，请替换为真实信息。
+    en: Placeholder bio, please replace with real information.
+  links: { scholar: "", github: "", orcid: "", email: "" }
+  status: current
+  order: 11
+
+- id: member-11
+  name: { zh: 成员11, en: Member 11 }
+  role: { zh: 客座学生, en: Visiting Student }
+  photo: /images/people/placeholder-11.jpg
+  research:
+    zh: 计算神经科学
+    en: Computational neuroscience
+  bio:
+    zh: 研究方向占位，请替换为真实信息。
+    en: Placeholder bio, please replace with real information.
+  links: { scholar: "", github: "", orcid: "", email: "" }
+  status: current
+  order: 12
+
+- id: member-12
+  name: { zh: 成员12, en: Member 12 }
+  role: { zh: 客座学生, en: Visiting Student }
+  photo: /images/people/placeholder-12.jpg
+  research:
+    zh: 机器学习与神经科学
+    en: Machine learning and neuroscience
+  bio:
+    zh: 研究方向占位，请替换为真实信息。
+    en: Placeholder bio, please replace with real information.
+  links: { scholar: "", github: "", orcid: "", email: "" }
+  status: current
+  order: 13

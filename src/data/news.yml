@@ -1,0 +1,53 @@
+- date: 2026-08-01
+  type: join
+  title:
+    zh: 孟洪宇博士加入广东省智能科学与技术研究院
+    en: Dr. Hongyu Meng joins GIIST
+  body:
+    zh: 课题组正式成立，长期招聘博士后、博士、研究助理。
+    en: The lab is established and is recruiting postdocs, PhD students, and research assistants.
+
+- date: 2026-09-15
+  type: paper
+  title:
+    zh: Nature Communications 发表预测编码与失配计算研究
+    en: Nature Communications paper on predictive coding and mismatch calculation
+  body:
+    zh: 课题组在 Nature Communications 发表论文，提出三因子学习规则解释失配反应。
+    en: Our paper in Nature Communications proposes a three-factor learning rule for mismatch responses.
+
+- date: 2026-10-01
+  type: paper
+  title:
+    zh: iScience 发表脉冲神经网络预测编码研究
+    en: iScience paper on predictive coding in spiking neural networks
+  body:
+    zh: 课题组在 iScience 发表论文，实现分层预测编码与局部可塑性。
+    en: Our paper in iScience implements hierarchical predictive coding with local plasticity.
+
+- date: 2026-10-10
+  type: recruit
+  title:
+    zh: 2026年秋季博士后与博士生招生
+    en: Fall 2026 postdoc and PhD recruitment
+  body:
+    zh: 课题组现招收博士后2名、博士研究生3名，欢迎计算神经科学、机器学习背景的同学申请。
+    en: Recruiting 2 postdocs and 3 PhD students with backgrounds in computational neuroscience or machine learning.
+
+- date: 2026-09-28
+  type: conference
+  title:
+    zh: 孟洪宇博士在Cosyne会议作邀请报告
+    en: Dr. Meng gives invited talk at Cosyne
+  body:
+    zh: 孟洪宇博士在Cosyne 2026会议就预测编码的神经元机制作邀请报告。
+    en: Dr. Meng gives an invited talk on cell-type-specific predictive coding at Cosyne 2026.
+
+- date: 2026-08-20
+  type: team
+  title:
+    zh: 课题组网站上线
+    en: Lab website launched
+  body:
+    zh: 预测编码与认知系统课题组官方网站正式上线。
+    en: The official website of the Lab of Predictive Coding and Cognitive System is now live.

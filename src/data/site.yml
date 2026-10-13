@@ -1,0 +1,30 @@
+title_zh: 预测编码与认知系统课题组
+title_en: Lab of Predictive Coding and Cognitive System
+pi_zh: 孟洪宇 博士 研究员
+pi_en: Dr. Hongyu Meng, Principal Investigator
+institute_zh: 广东省智能科学与技术研究院
+institute_en: Guangdong Institute of Intelligence Science and Technology
+email: join@example.edu.cn
+address_zh: 广东省智能科学与技术研究院
+address_en: Guangdong Institute of Intelligence Science and Technology
+github: https://github.com/predictive-coding-lab
+scholar: https://scholar.google.com/citations?user=placeholder
+orcid: https://orcid.org/0000-0000-0000-0000
+description_zh: 解析大脑预测与误差计算机制，推动高效类脑智能算法落地
+description_en: Decoding the brain's predictive and error-computing mechanisms to advance efficient brain-inspired AI
+
+# === V2 新增：Logo 与图片配置 ===
+# 课题组 Logo（显示在页眉左侧）。设为 null 则使用默认 SVG 图标。
+# 替换方法：将图片放入 public/images/logo/，然后修改下方路径
+lab_logo: /images/logo/institute-logo111.png
+# lab_logo: null  # 取消注释此行可恢复默认 SVG 图标
+
+# 单位 Logo（显示在页脚）。设为 null 则只显示文字。
+institute_logo: /images/logo/institute-logo111.png
+#institute_logo: null  # 取消注释此行可恢复纯文字
+
+# Logo 显示尺寸（px），可调整
+lab_logo_width: 280
+lab_logo_height: 40
+institute_logo_width: 210
+institute_logo_height: 40

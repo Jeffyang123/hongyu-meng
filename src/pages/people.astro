@@ -1,0 +1,76 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import MemberCard from '../components/MemberCard.astro';
+import membersData from '../data/members.yml';
+
+const lang = 'zh';
+const pi = membersData[0];
+const currentMembers = membersData.filter(m => m.status === 'current' && m.id !== pi.id);
+---
+
+<BaseLayout lang={lang} current="/people" title="成员与校友">
+  <section class="neural-bg border-b border-primary/5">
+    <div class="container-content py-16">
+      <h1 class="text-4xl lg:text-5xl font-serif font-bold text-primary mb-4">成员与校友</h1>
+      <p class="text-lg text-primary/60">People & Alumni</p>
+    </div>
+  </section>
+
+  <!-- PI -->
+  <section class="py-16">
+    <div class="container-content">
+      <h2 class="section-title">课题组组长</h2>
+      <div class="card p-8 max-w-3xl">
+        <div class="flex flex-col md:flex-row gap-8">
+          <div class="shrink-0">
+            <img
+              src={pi.photo}
+              alt={pi.name.zh}
+              class="w-40 h-40 rounded-2xl object-cover"
+              onerror="this.src='/images/people/placeholder.svg'"
+            />
+          </div>
+          <div class="flex-1">
+            <h3 class="text-2xl font-serif font-bold text-primary mb-1">{pi.name.zh}</h3>
+            <p class="text-accent-dark font-medium mb-3">{pi.role.zh}</p>
+            <p class="text-primary/70 leading-relaxed mb-4">{pi.bio.zh}</p>
+            <div class="mb-4">
+              <p class="text-sm font-medium text-primary/50 mb-1">研究方向</p>
+              <p class="text-primary/80">{pi.research.zh}</p>
+            </div>
+            {pi.links && (pi.links.email || pi.links.github || pi.links.scholar || pi.links.orcid) && (
+              <div class="flex gap-4 text-sm">
+                {pi.links.email && <a href={`mailto:${pi.links.email}`} class="link-accent">Email</a>}
+                {pi.links.github && <a href={pi.links.github} class="link-accent" target="_blank" rel="noopener">GitHub</a>}
+                {pi.links.scholar && <a href={pi.links.scholar} class="link-accent" target="_blank" rel="noopener">Scholar</a>}
+                {pi.links.orcid && <a href={pi.links.orcid} class="link-accent" target="_blank" rel="noopener">ORCID</a>}
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Current Members -->
+  <section class="py-16 bg-white border-y border-primary/5">
+    <div class="container-content">
+      <h2 class="section-title">组成员</h2>
+      <p class="section-subtitle">Lab Members</p>
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {currentMembers.map(m => <MemberCard member={m} lang={lang} />)}
+      </div>
+    </div>
+  </section>
+
+  <!-- Alumni -->
+  <section class="py-16">
+    <div class="container-content">
+      <h2 class="section-title">校友</h2>
+      <p class="section-subtitle">Alumni</p>
+      <div class="card p-8 text-center text-primary/50">
+        <p>暂无校友信息，后续将在此展示。</p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

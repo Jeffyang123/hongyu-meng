@@ -1,0 +1,107 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import researchData from '../data/research.yml';
+
+const lang = 'zh';
+const iconMap = {
+  brain: 'M12 2a3 3 0 0 0-3 3v1a3 3 0 0 0-3 3v1a3 3 0 0 0 0 6v1a3 3 0 0 0 3 3v1a3 3 0 0 0 6 0v-1a3 3 0 0 0 3-3v-1a3 3 0 0 0 0-6v-1a3 3 0 0 0-3-3V5a3 3 0 0 0-3-3z',
+  chip: 'M9 3v2M15 3v2M9 19v2M15 19v2M3 9h2M3 15h2M19 9h2M19 15h2M9 9h6v6H9z',
+};
+---
+
+<BaseLayout lang={lang} current="/research" title="研究方向" description={researchData.mission.zh}>
+  <!-- Hero -->
+  <section class="neural-bg border-b border-primary/5">
+    <div class="container-content py-16">
+      <h1 class="text-4xl lg:text-5xl font-serif font-bold text-primary mb-6">研究方向</h1>
+      <p class="text-lg text-primary/70 max-w-3xl leading-relaxed">{researchData.mission.zh}</p>
+    </div>
+  </section>
+
+  <!-- Two Goals -->
+  <section class="py-16">
+    <div class="container-content">
+      <h2 class="section-title text-center">研究目标</h2>
+      <p class="section-subtitle text-center">Research Goals</p>
+      <div class="grid md:grid-cols-2 gap-8 mt-8">
+        {researchData.goals.map((goal, i) => (
+          <div class="card p-8">
+            {/* V2: 可选图片，显示在卡片顶部 */}
+            {goal.image ? (
+              <div class="mb-4 rounded-lg overflow-hidden bg-primary/5" style="aspect-ratio: 16/9">
+                <img
+                  src={goal.image}
+                  alt={goal.title.zh}
+                  class={`w-full h-full object-${goal.image_size || 'cover'}`}
+                  onerror="this.style.display='none';"
+                />
+              </div>
+            ) : null}
+            <div class="flex items-center gap-4 mb-4">
+              <div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center shrink-0">
+                <svg class="w-6 h-6 text-accent-dark" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path d={iconMap[goal.icon] || iconMap.brain} />
+                </svg>
+              </div>
+              <span class="text-4xl font-serif font-bold text-accent/30">{i + 1}</span>
+            </div>
+            <h3 class="text-xl font-serif font-bold text-primary mb-3">{goal.title.zh}</h3>
+            <p class="text-primary/70 leading-relaxed">{goal.desc.zh}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Sub-directions -->
+  <section class="py-16 bg-white border-y border-primary/5">
+    <div class="container-content">
+      <h2 class="section-title">子方向</h2>
+      <p class="section-subtitle">Sub-directions</p>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {researchData.sub_directions.map((dir, i) => (
+          <div class="card card-hover p-6">
+            {/* V2: 可选图片，显示在标题上方 */}
+            {dir.image ? (
+              <div class="mb-3 rounded-lg overflow-hidden bg-primary/5" style="aspect-ratio: 16/9">
+                <img
+                  src={dir.image}
+                  alt={dir.title.zh}
+                  class={`w-full h-full object-${dir.image_size || 'cover'}`}
+                  onerror="this.style.display='none';"
+                />
+              </div>
+            ) : null}
+            <div class="flex items-center gap-3 mb-3">
+              <span class="w-8 h-8 rounded-lg bg-primary/5 flex items-center justify-center text-sm font-bold text-primary/40">
+                {String(i + 1).padStart(2, '0')}
+              </span>
+              <h3 class="font-serif font-bold text-primary">{dir.title.zh}</h3>
+            </div>
+            <p class="text-sm text-primary/60 leading-relaxed">{dir.desc.zh}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Research Pipeline -->
+  <section class="py-16">
+    <div class="container-content">
+      <h2 class="section-title text-center">研究路线</h2>
+      <p class="section-subtitle text-center">From mechanism to application</p>
+      <div class="flex flex-wrap items-center justify-center gap-4 mt-8">
+        {['预测编码', '误差计算', '脉冲网络', '仿真验证', '具身智能'].map((step, i, arr) => (
+          <>
+            <div class="px-5 py-3 rounded-card bg-primary text-white font-medium">
+              {step}
+            </div>
+            {i < arr.length - 1 && (
+              <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+            )}
+          </>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,126 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PublicationCard from '../../components/PublicationCard.astro';
+import MemberCard from '../../components/MemberCard.astro';
+import NewsCard from '../../components/NewsCard.astro';
+import siteData from '../../data/site.yml';
+import membersData from '../../data/members.yml';
+import publicationsData from '../../data/publications.yml';
+import newsData from '../../data/news.yml';
+import researchData from '../../data/research.yml';
+
+const lang = 'en';
+const pi = membersData[0];
+const teamMembers = membersData.slice(1, 7);
+const recentPubs = publicationsData.slice(0, 3);
+const recentNews = newsData.slice(0, 3);
+
+// V2: Dynamic grid columns based on keyword count
+const kwCount = researchData.keywords.length;
+const kwGridClass = kwCount <= 2 ? 'grid-cols-2'
+  : kwCount <= 4 ? 'grid-cols-2 lg:grid-cols-4'
+  : kwCount <= 6 ? 'grid-cols-2 lg:grid-cols-3'
+  : 'grid-cols-2 lg:grid-cols-4';
+---
+
+<BaseLayout lang={lang} current="/">
+  <section class="relative overflow-hidden neural-bg">
+    <div class="absolute inset-0 grid-pattern opacity-50"></div>
+    <div class="container-content relative py-20 lg:py-28">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div class="fade-in-up">
+          <p class="text-accent-dark font-medium mb-4 tracking-wide">{siteData.institute_en}</p>
+          <h1 class="text-4xl lg:text-5xl font-serif font-bold text-primary mb-4 leading-tight">
+            {siteData.title_en}
+          </h1>
+          <p class="text-lg lg:text-xl text-primary/60 mb-2">{siteData.title_zh}</p>
+          <p class="text-base text-primary/70 mb-8 leading-relaxed max-w-lg">{siteData.description_en}</p>
+          <div class="flex flex-wrap gap-3">
+            <a href="/en/research" class="btn-primary">Research <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" /></svg></a>
+            <a href="/en/publications" class="btn-outline">Publications</a>
+            <a href="/en/join" class="btn-accent">Join Us</a>
+          </div>
+        </div>
+        <div class="flex justify-center lg:justify-end fade-in-up">
+          <div class="relative">
+            <div class="w-64 h-64 lg:w-80 lg:h-80 rounded-2xl overflow-hidden shadow-card-hover bg-primary/5">
+              <img src={pi.photo} alt={pi.name.en} class="w-full h-full object-cover" onerror="this.src='/images/people/placeholder.svg'" />
+            </div>
+            <div class="absolute -bottom-4 -left-4 card px-5 py-3">
+              <p class="font-serif font-bold text-primary">{pi.name.en}</p>
+              <p class="text-sm text-accent-dark">{pi.role.en}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-12 bg-white border-y border-primary/5">
+    <div class="container-content">
+      <div class={`grid ${kwGridClass} gap-4`}>
+        {researchData.keywords.map(kw => (
+          <div class="text-center p-4 rounded-card bg-surface overflow-hidden">
+            {kw.image ? (
+              <div class="mb-3 rounded-lg overflow-hidden bg-primary/5" style="aspect-ratio: 16/9">
+                <img
+                  src={kw.image}
+                  alt={kw.en}
+                  class={`w-full h-full object-${kw.image_size || 'cover'}`}
+                  onerror="this.style.display='none';"
+                />
+              </div>
+            ) : null}
+            <p class="font-serif font-bold text-primary text-lg">{kw.en}</p>
+            <p class="text-sm text-primary/50 mt-1">{kw.zh}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16">
+    <div class="container-content">
+      <div class="flex items-end justify-between mb-8">
+        <div><h2 class="section-title">Recent Publications</h2><p class="section-subtitle">Selected works</p></div>
+        <a href="/en/publications" class="link-accent text-sm font-medium">View all →</a>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">{recentPubs.map(pub => <PublicationCard pub={pub} lang={lang} />)}</div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-white border-y border-primary/5">
+    <div class="container-content">
+      <div class="flex items-end justify-between mb-8">
+        <div><h2 class="section-title">Our Team</h2><p class="section-subtitle">Lab members</p></div>
+        <a href="/en/people" class="link-accent text-sm font-medium">View all →</a>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">
+        <MemberCard member={pi} lang={lang} isPI={true} />
+        {teamMembers.map(m => <MemberCard member={m} lang={lang} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16">
+    <div class="container-content">
+      <div class="flex items-end justify-between mb-8">
+        <div><h2 class="section-title">Latest News</h2><p class="section-subtitle">Updates</p></div>
+        <a href="/en/news" class="link-accent text-sm font-medium">View all →</a>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">{recentNews.map(item => <NewsCard item={item} lang={lang} />)}</div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-primary text-white">
+    <div class="container-content text-center">
+      <h2 class="text-3xl lg:text-4xl font-serif font-bold mb-4">Join Us</h2>
+      <p class="text-lg text-white/70 mb-8 max-w-2xl mx-auto">
+        We are recruiting postdocs, PhD and master's students, research assistants, and undergraduate researchers.
+      </p>
+      <a href="/en/join" class="btn-accent inline-flex items-center gap-2">
+        View positions <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+      </a>
+    </div>
+  </section>
+</BaseLayout>
