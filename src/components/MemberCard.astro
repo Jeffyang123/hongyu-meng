@@ -6,9 +6,7 @@ interface Props {
 }
 const { member, lang, isPI = false } = Astro.props;
 
-// 统一 base 前缀，GitHub Pages 上为 /hongyu-meng/
 const base = import.meta.env.BASE_URL;
-// 给 YAML 中以 / 开头的资源路径加 base
 const asset = (p) => (p ? `${base}${String(p).replace(/^\//, '')}` : p);
 
 const name = lang === 'zh' ? member.name.zh : member.name.en;
@@ -16,8 +14,15 @@ const role = lang === 'zh' ? member.role.zh : member.role.en;
 const research = lang === 'zh' ? member.research?.zh : member.research?.en;
 const bio = lang === 'zh' ? member.bio?.zh : member.bio?.en;
 
+// 默认 true，YAML 可显式设 false
+const showBio = member.showBio !== false;
+
 const photo = asset(member.photo);
-const placeholder = `${base}images/people/placeholder.svg`;
+const placeholder = `${base}images/people/placeholder-1.jpg`;
+
+const hasLinks = member.links && (
+  member.links.email || member.links.github || member.links.scholar || member.links.orcid
+);
 ---
 
 <article class={`card card-hover p-6 text-center ${isPI ? 'ring-2 ring-accent/30' : ''}`}>
@@ -30,16 +35,22 @@ const placeholder = `${base}images/people/placeholder.svg`;
       onerror={`this.src='${placeholder}'`}
     />
     {isPI && (
-      <span class="absolute -bottom-1 -right-1 px-2 py-0.5 bg-accent text-white text-xs rounded-full font-medium">
-        PI
-      </span>
+      <span class="absolute -bottom-1 -right-1 px-2 py-0.5 bg-accent text-white text-xs rounded-full font-medium">PI</span>
     )}
   </div>
+
   <h3 class="text-lg font-serif font-bold text-primary mb-1">{name}</h3>
   <p class="text-sm text-accent-dark font-medium mb-2">{role}</p>
+
   {research && <p class="text-sm text-primary/60 mb-2">{research}</p>}
-  {bio && isPI && <p class="text-xs text-primary/50 leading-relaxed mt-2 text-left">{bio}</p>}
-  {member.links && (member.links.email || member.links.github || member.links.scholar || member.links.orcid) && (
+
+  {showBio && bio && (
+    <p class={`text-xs text-primary/50 leading-relaxed ${isPI ? 'text-left mt-2' : 'text-center mt-1'}`}>
+      {bio}
+    </p>
+  )}
+
+  {hasLinks && (
     <div class="flex justify-center gap-3 mt-3">
       {member.links.email && <a href={`mailto:${member.links.email}`} class="text-primary/40 hover:text-accent" aria-label="Email">
         <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1 0 2 1 2 2v12c0 1-1 2-2 2H4c-1 0-2-1-2-2V6c0-1 1-2 2-2z" /><polyline points="22,6 12,13 2,6" /></svg>
@@ -49,6 +60,9 @@ const placeholder = `${base}images/people/placeholder.svg`;
       </a>}
       {member.links.scholar && <a href={member.links.scholar} class="text-primary/40 hover:text-accent" target="_blank" rel="noopener" aria-label="Scholar">
         <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" /></svg>
+      </a>}
+      {member.links.orcid && <a href={member.links.orcid} class="text-primary/40 hover:text-accent" target="_blank" rel="noopener" aria-label="ORCID">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><path d="M12 6v6l4 2" /></svg>
       </a>}
     </div>
   )}

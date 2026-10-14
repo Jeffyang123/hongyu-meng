@@ -1,3 +1,18 @@
+# ============================================================
+# 成员数据
+# ------------------------------------------------------------
+# 字段说明：
+#   status:   current（当前成员） / alumni（校友）
+#   featured: true  → 显示在首页“团队成员”区域
+#             false → 只在 /people 页显示
+#             不写   → 默认不显示在首页
+#   showBio:  true  → 卡片里显示 bio
+#             false → 卡片里不显示 bio
+#             不写   → 默认显示
+#   order:    排序，数字小的在前
+# ============================================================
+
+# ---------- PI ----------
 - id: meng-hongyu
   name: { zh: 孟洪宇, en: Hongyu Meng }
   role: { zh: 研究员、课题组组长, en: Principal Investigator }
@@ -15,8 +30,11 @@
     orcid: ""
     email: menghongyu@gdiist.cn
   status: current
+  featured: true          # PI 首页固定显示
+  showBio: true
   order: 1
 
+# ---------- 当前成员 ----------
 - id: member-01
   name: { zh: 成员01, en: Member 01 }
   role: { zh: 博士后, en: Postdoc }
@@ -29,9 +47,10 @@
     en: Placeholder bio, please replace with real information.
   links: { scholar: "", github: "", orcid: "", email: "" }
   status: current
+  featured: false         # 占位成员，只在 /people 显示
+  showBio: false
   order: 2
-  
-  
+
 - id: member-02
   name: { zh: 靳语飞, en: Yufei Jin }
   role: { zh: 研究助理, en: Research Assistant }
@@ -44,6 +63,8 @@
     en: Research focuses on predictive coding theory and brain-inspired intelligence algorithms, exploring hierarchical predictive mechanisms of brain information processing.
   links: { scholar: "", github: "", orcid: "", email: "" }
   status: current
+  featured: true
+  showBio: true
   order: 3
 
 - id: member-03
@@ -58,10 +79,9 @@
     en: Research focuses on spiking neural networks and embodied intelligence, exploring biologically inspired spatiotemporal information processing mechanisms and their applications in robotic perception and decision-making.
   links: { scholar: "", github: "", orcid: "", email: "" }
   status: current
+  featured: true
+  showBio: true
   order: 4
-
-
-
 
 - id: member-04
   name: { zh: 吴伟玮, en: Weiwei Wu }
@@ -75,6 +95,8 @@
     en: Research focuses on computational neuroscience and brain-inspired models, investigating computational principles of neural networks and their applications in intelligent systems.
   links: { scholar: "", github: "", orcid: "", email: "" }
   status: current
+  featured: true
+  showBio: true
   order: 5
 
 - id: member-05
@@ -85,10 +107,12 @@
     zh: 计算神经科学、类脑智能
     en: Computational neuroscience, brain-inspired AI
   bio:
-    zh: 南开大学生物科学学士，香港科技大学人工智能硕士在读
-    en: Placeholder bio, please replace with real information.
+    zh: 南开大学生物科学学士，香港科技大学人工智能硕士在读。
+    en: BS in Biological Sciences from Nankai University; MS student in Artificial Intelligence at HKUST.
   links: { scholar: "", github: "", orcid: "", email: "" }
   status: current
+  featured: true
+  showBio: true
   order: 6
 
 - id: member-06
@@ -103,6 +127,8 @@
     en: Placeholder bio, please replace with real information.
   links: { scholar: "", github: "", orcid: "", email: "" }
   status: current
+  featured: true
+  showBio: true
   order: 7
 
 - id: member-07
@@ -117,6 +143,8 @@
     en: Placeholder bio, please replace with real information.
   links: { scholar: "", github: "", orcid: "", email: "" }
   status: current
+  featured: true
+  showBio: true
   order: 8
 
 - id: member-08
@@ -131,6 +159,8 @@
     en: Placeholder bio, please replace with real information.
   links: { scholar: "", github: "", orcid: "", email: "" }
   status: current
+  featured: false
+  showBio: false
   order: 9
 
 - id: member-09
@@ -145,6 +175,8 @@
     en: Placeholder bio, please replace with real information.
   links: { scholar: "", github: "", orcid: "", email: "" }
   status: current
+  featured: false
+  showBio: false
   order: 10
 
 - id: member-10
@@ -159,6 +191,8 @@
     en: Placeholder bio, please replace with real information.
   links: { scholar: "", github: "", orcid: "", email: "" }
   status: current
+  featured: false
+  showBio: false
   order: 11
 
 - id: member-11
@@ -173,6 +207,8 @@
     en: Placeholder bio, please replace with real information.
   links: { scholar: "", github: "", orcid: "", email: "" }
   status: current
+  featured: false
+  showBio: false
   order: 12
 
 - id: member-12
@@ -187,4 +223,6 @@
     en: Placeholder bio, please replace with real information.
   links: { scholar: "", github: "", orcid: "", email: "" }
   status: current
+  featured: false
+  showBio: false
   order: 13

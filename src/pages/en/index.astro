@@ -16,8 +16,14 @@ const base = import.meta.env.BASE_URL;
 // 把 YAML 中以 / 开头的资源路径加上 base
 const asset = (p) => (p ? `${base}${String(p).replace(/^\//, '')}` : p);
 
+// PI：固定取第一位
 const pi = membersData[0];
-const teamMembers = membersData.slice(1, 7);
+
+// 首页团队成员：只取 featured === true 的当前成员（不含 PI），最多 6 位
+const teamMembers = membersData
+  .filter(m => m.status === 'current' && m.featured === true && m.id !== pi.id)
+  .slice(0, 6);
+
 const recentPubs = publicationsData.slice(0, 3);
 const recentNews = newsData.slice(0, 3);
 
@@ -54,7 +60,7 @@ const kwGridClass = kwCount <= 2 ? 'grid-cols-2'
                 src={asset(pi.photo)}
                 alt={pi.name.en}
                 class="w-full h-full object-cover"
-                onerror={`this.src='${base}images/people/placeholder.svg'`}
+                onerror={`this.src='${base}images/people/placeholder-1.jpg'`}
               />
             </div>
             <div class="absolute -bottom-4 -left-4 card px-5 py-3">
