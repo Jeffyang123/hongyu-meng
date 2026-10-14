@@ -30,53 +30,55 @@
   links: { scholar: "", github: "", orcid: "", email: "" }
   status: current
   order: 2
-
+  
+  
 - id: member-02
-  name: { zh: 成员02, en: Member 02 }
-  role: { zh: 博士后, en: Postdoc }
-  photo: /images/people/placeholder-2.jpg
+  name: { zh: 靳语飞, en: Yufei Jin }
+  role: { zh: 研究助理, en: Research Assistant }
+  photo: /images/people/jinyufei.png
   research:
-    zh: 神经动力学
-    en: Neural dynamics
+    zh: 预测编码、类脑智能
+    en: Predictive coding, brain-inspired intelligence
   bio:
-    zh: 研究方向占位，请替换为真实信息。
-    en: Placeholder bio, please replace with real information.
+    zh: 主要研究方向为预测编码理论与类脑智能算法，关注大脑信息处理的层级预测机制及其在计算模型中的应用。
+    en: Research focuses on predictive coding theory and brain-inspired intelligence algorithms, exploring hierarchical predictive mechanisms of brain information processing.
   links: { scholar: "", github: "", orcid: "", email: "" }
   status: current
   order: 3
 
 - id: member-03
-  name: { zh: 成员03, en: Member 03 }
-  role: { zh: 博士研究生, en: PhD Student }
-  photo: /images/people/placeholder-3.jpg
+  name: { zh: 杨元平, en: Yuanping Yang }
+  role: { zh: 研究助理, en: Research Assistant }
+  photo: /images/people/yangyuanping.jpg
   research:
-    zh: 脉冲神经网络
-    en: Spiking neural networks
+    zh: 脉冲神经网络、具身智能
+    en: Spiking neural networks, embodied intelligence
   bio:
-    zh: 研究方向占位，请替换为真实信息。
-    en: Placeholder bio, please replace with real information.
+    zh: 主要研究方向为脉冲神经网络与具身智能，探索生物启发的时空信息处理机制及其在机器人感知与决策中的应用。
+    en: Research focuses on spiking neural networks and embodied intelligence, exploring biologically inspired spatiotemporal information processing mechanisms and their applications in robotic perception and decision-making.
   links: { scholar: "", github: "", orcid: "", email: "" }
   status: current
   order: 4
 
 - id: member-04
-  name: { zh: 成员04, en: Member 04 }
-  role: { zh: 博士研究生, en: PhD Student }
-  photo: /images/people/placeholder-4.jpg
+  name: { zh: 徐奕昕, en: Yixin Xu }
+  role: { zh: 实习生, en: Research Intern }
+  photo: /images/people/xuyixin.jpg
   research:
-    zh: 神经形态计算
-    en: Neuromorphic computing
+    zh: 计算神经科学、类脑智能
+    en: Computational neuroscience, brain-inspired AI
   bio:
-    zh: 研究方向占位，请替换为真实信息。
+    zh: : 南开大学生物科学学士，香港科技大学人工智能硕士在读
     en: Placeholder bio, please replace with real information.
   links: { scholar: "", github: "", orcid: "", email: "" }
   status: current
   order: 5
 
+
 - id: member-05
-  name: { zh: 成员05, en: Member 05 }
-  role: { zh: 硕士研究生, en: Master Student }
-  photo: /images/people/placeholder-5.jpg
+  name: { zh: 吴启元, en: Member 05 }
+  role: { zh: 实习生, en: Research Intern }
+  photo: /images/people/wuqiyuan.jpg
   research:
     zh: 预测编码建模
     en: Predictive coding modeling
@@ -88,8 +90,8 @@
   order: 6
 
 - id: member-06
-  name: { zh: 成员06, en: Member 06 }
-  role: { zh: 硕士研究生, en: Master Student }
+  name: { zh: wulicheng, en: Member 06 }
+  role: { zh: 实习生, en: Research Intern }
   photo: /images/people/placeholder-6.jpg
   research:
     zh: 具身智能验证
