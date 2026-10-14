@@ -35,7 +35,7 @@
 - id: member-02
   name: { zh: 靳语飞, en: Yufei Jin }
   role: { zh: 研究助理, en: Research Assistant }
-  photo: /images/people/jinyufei.png
+  photo: /images/people/3.png
   research:
     zh: 预测编码、类脑智能
     en: Predictive coding, brain-inspired intelligence
@@ -49,7 +49,7 @@
 - id: member-03
   name: { zh: 杨元平, en: Yuanping Yang }
   role: { zh: 研究助理, en: Research Assistant }
-  photo: /images/people/yangyuanping.jpg
+  photo: /images/people/4.png
   research:
     zh: 脉冲神经网络、具身智能
     en: Spiking neural networks, embodied intelligence
@@ -60,10 +60,27 @@
   status: current
   order: 4
 
+
+
+
 - id: member-04
+  name: { zh: 吴伟玮, en: Weiwei Wu }
+  role: { zh: 研究助理, en: Research Assistant }
+  photo: /images/people/5.png
+  research:
+    zh: 计算神经科学、类脑模型
+    en: Computational neuroscience, brain-inspired models
+  bio:
+    zh: 主要研究方向为计算神经科学与类脑模型，关注神经网络的计算原理及其在智能系统中的应用。
+    en: Research focuses on computational neuroscience and brain-inspired models, investigating computational principles of neural networks and their applications in intelligent systems.
+  links: { scholar: "", github: "", orcid: "", email: "" }
+  status: current
+  order: 5
+
+- id: member-05
   name: { zh: 徐奕昕, en: Yixin Xu }
   role: { zh: 实习生, en: Research Intern }
-  photo: /images/people/xuyixin.jpg
+  photo: /images/people/6.png
   research:
     zh: 计算神经科学、类脑智能
     en: Computational neuroscience, brain-inspired AI
@@ -72,13 +89,12 @@
     en: Placeholder bio, please replace with real information.
   links: { scholar: "", github: "", orcid: "", email: "" }
   status: current
-  order: 5
+  order: 6
 
-
-- id: member-05
-  name: { zh: 吴启元, en: Member 05 }
+- id: member-06
+  name: { zh: 吴启元, en: Qiyuan Wu }
   role: { zh: 实习生, en: Research Intern }
-  photo: /images/people/wuqiyuan.jpg
+  photo: /images/people/7.png
   research:
     zh: 预测编码建模
     en: Predictive coding modeling
@@ -87,29 +103,15 @@
     en: Placeholder bio, please replace with real information.
   links: { scholar: "", github: "", orcid: "", email: "" }
   status: current
-  order: 6
-
-- id: member-06
-  name: { zh: wulicheng, en: Member 06 }
-  role: { zh: 实习生, en: Research Intern }
-  photo: /images/people/wulicheng.jpg
-  research:
-    zh: 具身智能验证
-    en: Embodied intelligence validation
-  bio:
-    zh: 研究方向占位，请替换为真实信息。
-    en: Placeholder bio, please replace with real information.
-  links: { scholar: "", github: "", orcid: "", email: "" }
-  status: current
   order: 7
 
 - id: member-07
-  name: { zh: 成员07, en: Member 07 }
-  role: { zh: 研究助理, en: Research Assistant }
-  photo: /images/people/placeholder-7.jpg
+  name: { zh: 吴轹城, en: Licheng Wu }
+  role: { zh: 实习生, en: Research Intern }
+  photo: /images/people/8.png
   research:
-    zh: 电生理数据分析
-    en: Electrophysiology data analysis
+    zh: 具身智能验证
+    en: Embodied intelligence validation
   bio:
     zh: 研究方向占位，请替换为真实信息。
     en: Placeholder bio, please replace with real information.
