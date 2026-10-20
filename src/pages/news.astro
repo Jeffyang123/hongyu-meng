@@ -1,0 +1,44 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import newsData from '../data/news.yml';
+
+const lang = 'zh';
+const sortedNews = [...newsData].sort((a, b) => new Date(b.date) - new Date(a.date));
+
+const typeColors = {
+  paper: 'bg-accent/10 text-accent-dark',
+  join: 'bg-coral/10 text-coral-dark',
+  recruit: 'bg-coral/10 text-coral-dark',
+  conference: 'bg-primary/10 text-primary',
+  team: 'bg-primary/10 text-primary',
+};
+const typeLabels = { paper: '论文', join: '加入', recruit: '招生', conference: '会议', team: '团队' };
+---
+
+<BaseLayout lang={lang} current="/news" title="新闻动态">
+  <section class="neural-bg border-b border-primary/5">
+    <div class="container-content py-16">
+      <h1 class="text-4xl lg:text-5xl font-serif font-bold text-primary mb-4">新闻动态</h1>
+      <p class="text-lg text-primary/60">News & Updates</p>
+    </div>
+  </section>
+
+  <section class="py-16">
+    <div class="container-content">
+      <div class="card p-5 lg:p-8">
+        {sortedNews.map(item => (
+          <details class="group border-b border-primary/5 last:border-b-0">
+            <summary class="list-row px-3 cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+              <span class="list-row-date">{item.date}</span>
+              <span class={`list-row-tag ${typeColors[item.type] || 'bg-primary/10 text-primary'}`}>{typeLabels[item.type] || item.type}</span>
+              <span class="list-row-title">{item.title.zh}</span>
+              <span class="text-accent-dark text-sm shrink-0 pt-1 group-open:hidden">详情 ▾</span>
+              <span class="text-accent-dark text-sm shrink-0 pt-1 hidden group-open:inline">收起 ▴</span>
+            </summary>
+            <p class="text-sm text-primary/60 leading-relaxed px-3 pb-4 pl-24">{item.body?.zh}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

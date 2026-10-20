@@ -1,0 +1,160 @@
+/* AI生成 */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-surface text-primary font-sans antialiased;
+  }
+  h1, h2, h3, h4 {
+    @apply font-serif font-bold tracking-tight;
+  }
+  a {
+    @apply transition-colors duration-200;
+  }
+}
+
+@layer components {
+  .container-content {
+    @apply max-w-content mx-auto px-6 lg:px-10;
+  }
+  .card {
+    @apply bg-white rounded-card shadow-card transition-all duration-300;
+  }
+  .card-hover {
+    @apply hover:shadow-card-hover hover:-translate-y-1;
+  }
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-6 py-3 bg-primary text-white rounded-card font-medium hover:bg-primary-light transition-all duration-300;
+  }
+  .btn-accent {
+    @apply inline-flex items-center gap-2 px-6 py-3 bg-accent text-white rounded-card font-medium hover:bg-accent-dark transition-all duration-300;
+  }
+  .btn-outline {
+    @apply inline-flex items-center gap-2 px-6 py-3 border-2 border-primary text-primary rounded-card font-medium hover:bg-primary hover:text-white transition-all duration-300;
+  }
+  .section-title {
+    @apply text-3xl lg:text-4xl font-serif font-bold text-primary mb-4;
+  }
+  .section-subtitle {
+    @apply text-lg text-primary/60 mb-8;
+  }
+  .tag {
+    @apply inline-block px-3 py-1 text-sm rounded-full bg-accent/10 text-accent-dark font-medium;
+  }
+  .link-accent {
+    @apply text-accent-dark hover:text-accent underline-offset-2 hover:underline;
+  }
+}
+
+/* Neural pulse animation for hero */
+@keyframes pulse-line {
+  0%, 100% { opacity: 0.15; transform: scaleY(1); }
+  50% { opacity: 0.5; transform: scaleY(1.5); }
+}
+
+.neural-bg {
+  background-image: 
+    radial-gradient(circle at 20% 50%, rgba(25, 195, 177, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 80% 30%, rgba(255, 107, 94, 0.03) 0%, transparent 50%);
+}
+
+.grid-pattern {
+  background-image: 
+    linear-gradient(rgba(11, 31, 51, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(11, 31, 51, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Smooth fade-in */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* ===== One-line list styles ===== */
+.list-row {
+  @apply flex items-start gap-4 py-3.5 border-b border-primary/5 transition-colors duration-200 hover:bg-accent/5;
+}
+.list-row:last-child {
+  @apply border-b-0;
+}
+.list-row-date {
+  @apply text-sm text-primary/40 font-mono shrink-0 w-20 pt-1;
+}
+.list-row-tag {
+  @apply px-2.5 py-1 text-xs rounded-full font-medium shrink-0 mt-0.5;
+}
+.list-row-title {
+  @apply text-sm sm:text-base text-primary/80 flex-1 min-w-0 leading-relaxed break-words;
+}
+.list-row-meta {
+  @apply text-sm text-primary/40 shrink-0 hidden lg:block pt-1 max-w-xs leading-relaxed;
+}
+
+/* ===== Member one-line row ===== */
+.member-row {
+  @apply flex items-center gap-4 sm:gap-6 py-4 border-b border-primary/5 transition-colors duration-200 hover:bg-accent/5;
+}
+.member-row:last-child {
+  @apply border-b-0;
+}
+.member-row-photo {
+  @apply w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 rounded-2xl object-cover shrink-0 bg-primary/5 ring-2 ring-white shadow-card;
+}
+.member-row-body {
+  @apply flex-1 min-w-0;
+}
+.member-row-head {
+  @apply flex flex-wrap items-baseline gap-x-3 gap-y-0.5;
+}
+.member-row-name {
+  @apply font-serif font-semibold text-lg text-primary;
+}
+.member-row-role {
+  @apply text-sm text-accent-dark font-medium;
+}
+.member-row-research {
+  @apply text-sm text-primary/60 leading-relaxed mt-1 break-words;
+}
+.member-row-action {
+  @apply shrink-0 text-primary/30 hover:text-accent text-lg px-2;
+}
+
+/* ===== Image placeholder grid ===== */
+.img-grid-12 {
+  @apply grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8;
+}
+.img-grid-22 {
+  @apply grid grid-cols-1 gap-6 lg:gap-8;
+}
+.img-placeholder {
+  @apply relative rounded-card overflow-hidden bg-primary/5 border-2 border-dashed border-primary/15 transition-all duration-300 hover:shadow-card-hover;
+}
+.img-placeholder img {
+  @apply w-full h-auto object-cover;
+}
+.img-placeholder-label {
+  @apply absolute bottom-3 left-3 px-3 py-1 bg-white/80 backdrop-blur-sm rounded-full text-xs text-primary/50 font-medium;
+}
+
+/* ===== PI highlight card ===== */
+.pi-card {
+  @apply card p-8 lg:p-10 ring-2 ring-accent/20;
+}
+.pi-photo-large {
+  @apply w-32 h-32 lg:w-40 lg:h-40 rounded-2xl object-cover shadow-card-hover;
+}
+
+/* ===== Section divider ===== */
+.section-divider {
+  @apply h-px bg-gradient-to-r from-transparent via-primary/10 to-transparent;
+}

@@ -1,0 +1,159 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import siteData from '../data/site.yml';
+
+const lang = 'zh';
+
+const positions = [
+  { title: '博士后', en: 'Postdoc', count: '2名', req: '计算神经科学、机器学习或相关领域博士学位，有电生理或计算建模经验者优先。' },
+  { title: '博士研究生', en: 'PhD Student', count: '3名', req: '数学、物理、计算机、神经科学等相关专业本科或硕士学历，对计算神经科学有浓厚兴趣。' },
+  { title: '硕士研究生', en: 'Master Student', count: '2名', req: '相关专业本科学历，具备一定编程和数学基础。' },
+  { title: '研究助理', en: 'Research Assistant', count: '1-2名', req: '本科及以上学历，负责实验数据分析与仿真平台维护。' },
+  { title: '本科毕设/实习生', en: 'Undergraduate / Intern', count: '若干', req: '在读本科生，可在课题组完成毕业设计或短期实习。' },
+];
+
+const faqs = [
+  { q: '需要什么专业背景？', a: '计算神经科学、应用数学、物理学、计算机科学、电子工程等方向均可，关键是对大脑计算原理和类脑智能有研究热情。' },
+  { q: '英语有什么要求？', a: '需要能够阅读英文文献和撰写英文论文。博士及博士后需具备较好的英语口语能力，以参加国际会议交流。' },
+  { q: '课题组的研究环境如何？', a: '课题组依托广东省智能科学与技术研究院，具备良好的计算资源和实验平台，与国内外多所高校保持密切合作。' },
+  { q: '申请流程是什么？', a: '请发送简历（含研究经历和代表性工作）至招聘邮箱，邮件标题注明申请岗位。初审通过后将安排面试。' },
+];
+---
+
+<BaseLayout lang={lang} current="/join" title="加入我们">
+  <section class="neural-bg border-b border-primary/5">
+    <div class="container-content py-16">
+      <h1 class="text-4xl lg:text-5xl font-serif font-bold text-primary mb-4">加入我们</h1>
+      <p class="text-lg text-primary/60 max-w-2xl">
+        欢迎对预测编码、计算神经科学与类脑智能有热情的同学加入课题组！
+      </p>
+    </div>
+  </section>
+
+  <!-- Simplified Recruitment -->
+  <section class="py-16">
+    <div class="container-content">
+      <h2 class="section-title">长期招聘</h2>
+      <p class="section-subtitle">We are hiring</p>
+
+      <div class="card p-8 lg:p-10">
+        <div class="flex flex-wrap gap-3 mb-6">
+          {['博士', '博士后', '研究生', '科研助理', '实习生'].map(p => (
+            <span class="px-4 py-2 bg-accent/10 text-accent-dark rounded-full font-medium text-sm">{p}</span>
+          ))}
+        </div>
+
+        <div class="space-y-4">
+          <div>
+            <h3 class="text-lg font-serif font-bold text-primary mb-2">基本要求</h3>
+            <ul class="space-y-2 text-primary/70 leading-relaxed">
+              <li class="flex gap-2"><span class="text-accent-dark shrink-0">•</span> 计算神经科学、应用数学、物理学、计算机科学、电子工程等相关专业背景</li>
+              <li class="flex gap-2"><span class="text-accent-dark shrink-0">•</span> 对大脑计算原理与类脑智能有浓厚研究兴趣</li>
+              <li class="flex gap-2"><span class="text-accent-dark shrink-0">•</span> 具备一定的编程和数学基础，能阅读英文文献并撰写英文论文</li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-lg font-serif font-bold text-primary mb-2">我们提供</h3>
+            <ul class="space-y-2 text-primary/70 leading-relaxed">
+              <li class="flex gap-2"><span class="text-accent-dark shrink-0">•</span> 依托广东省智能科学与技术研究院的充足计算资源与实验平台</li>
+              <li class="flex gap-2"><span class="text-accent-dark shrink-0">•</span> 与国内外多所高校（NYU、Northwestern等）的密切合作与交流机会</li>
+              <li class="flex gap-2"><span class="text-accent-dark shrink-0">•</span> 具有竞争力的薪酬待遇与发展空间</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Toggle: Detailed Positions -->
+        <details class="mt-8 group">
+          <summary class="cursor-pointer text-accent-dark font-medium flex items-center gap-2 hover:text-accent">
+            查看各岗位详细要求
+            <svg class="w-5 h-5 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" /></svg>
+          </summary>
+          <div class="grid md:grid-cols-2 gap-4 mt-4">
+            {positions.map(p => (
+              <div class="card p-5 border border-primary/5">
+                <div class="flex items-center justify-between mb-2">
+                  <h4 class="font-serif font-bold text-primary">{p.title}</h4>
+                  <span class="tag text-xs">{p.count}</span>
+                </div>
+                <p class="text-xs text-primary/40 mb-2">{p.en}</p>
+                <p class="text-sm text-primary/70 leading-relaxed">{p.req}</p>
+              </div>
+            ))}
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- How to Apply -->
+  <section class="py-16 bg-white border-y border-primary/5">
+    <div class="container-content">
+      <h2 class="section-title">申请方式</h2>
+      <div class="card p-8">
+        <ol class="space-y-4">
+          <li class="flex gap-4">
+            <span class="w-8 h-8 rounded-full bg-accent/10 text-accent-dark font-bold flex items-center justify-center shrink-0">1</span>
+            <div>
+              <p class="font-medium text-primary mb-1">准备材料</p>
+              <p class="text-sm text-primary/60">个人简历（含教育背景、研究经历、代表性工作）、研究陈述（1-2页）。</p>
+            </div>
+          </li>
+          <li class="flex gap-4">
+            <span class="w-8 h-8 rounded-full bg-accent/10 text-accent-dark font-bold flex items-center justify-center shrink-0">2</span>
+            <div>
+              <p class="font-medium text-primary mb-1">发送邮件</p>
+              <p class="text-sm text-primary/60">
+                发送至 <a href={`mailto:${siteData.email}`} class="link-accent">{siteData.email}</a>，
+                邮件标题格式：<strong>[申请岗位] 姓名 - 毕业院校</strong>
+              </p>
+            </div>
+          </li>
+          <li class="flex gap-4">
+            <span class="w-8 h-8 rounded-full bg-accent/10 text-accent-dark font-bold flex items-center justify-center shrink-0">3</span>
+            <div>
+              <p class="font-medium text-primary mb-1">面试</p>
+              <p class="text-sm text-primary/60">初审通过后安排线上或线下面试，讨论研究兴趣与课题组匹配度。</p>
+            </div>
+          </li>
+          <li class="flex gap-4">
+            <span class="w-8 h-8 rounded-full bg-accent/10 text-accent-dark font-bold flex items-center justify-center shrink-0">4</span>
+            <div>
+              <p class="font-medium text-primary mb-1">录用</p>
+              <p class="text-sm text-primary/60">通过面试后将发放正式录用通知，协助办理入职/入学手续。</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-16">
+    <div class="container-content">
+      <h2 class="section-title">常见问题</h2>
+      <div class="space-y-4">
+        {faqs.map(faq => (
+          <details class="card p-6 group">
+            <summary class="font-serif font-bold text-primary cursor-pointer flex items-center justify-between">
+              {faq.q}
+              <svg class="w-5 h-5 text-accent transition-transform group-open:rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" /></svg>
+            </summary>
+            <p class="text-primary/70 mt-3 leading-relaxed">{faq.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 bg-primary text-white">
+    <div class="container-content text-center">
+      <h2 class="text-2xl font-serif font-bold mb-4">准备好加入我们了吗？</h2>
+      <p class="text-white/70 mb-6">发送申请邮件，开启你的科研之旅。</p>
+      <a href={`mailto:${siteData.email}`} class="btn-accent">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1 0 2 1 2 2v12c0 1-1 2-2 2H4c-1 0-2-1-2-2V6c0-1 1-2 2-2z" /><polyline points="22,6 12,13 2,6" /></svg>
+        {siteData.email}
+      </a>
+    </div>
+  </section>
+</BaseLayout>

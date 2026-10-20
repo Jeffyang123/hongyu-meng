@@ -1,0 +1,102 @@
+mission:
+  zh: 我们的研究旨在揭示大脑如何通过预测编码机制实现高效感知与学习，并将这些原理转化为新一代类脑智能算法与神经形态计算系统。
+  en: Our research aims to uncover how the brain achieves efficient perception and learning through predictive coding, and to translate these principles into next-generation brain-inspired algorithms and neuromorphic computing systems.
+
+goals:
+  - title:
+      zh: 预测编码的神经科学机制
+      en: Neural mechanisms of predictive coding
+    desc:
+      zh: 研究内部表征、预测误差在神经元类型、局部环路和跨脑区网络中的产生与传播。
+      en: How internal representations and prediction errors arise across cell types, circuits, and brain-wide networks.
+    icon: brain
+
+  - title:
+      zh: 预测编码与类脑智能
+      en: Predictive coding and brain-inspired AI
+    desc:
+      zh: 融合预测编码、局部学习规则与脉冲神经网络，推动类脑芯片与智能系统应用。
+      en: Integrating predictive coding, local learning, and SNNs for neuromorphic chips and intelligent systems.
+    icon: chip
+
+sub_directions:
+  - title:
+      zh: 预测误差计算
+      en: Prediction error computation
+    desc:
+      zh: 研究大脑如何计算和编码预测误差，包括自上而下与自下而上信号的整合机制。
+      en: How the brain computes and encodes prediction errors, including top-down and bottom-up signal integration.
+
+  - title:
+      zh: 神经元类型机制
+      en: Cell-type-specific mechanisms
+    desc:
+      zh: 探索不同神经元类型（兴奋性、抑制性、VIP、SST等）在预测编码中的特异性作用。
+      en: Exploring the specific roles of different cell types (excitatory, inhibitory, VIP, SST) in predictive coding.
+
+  - title:
+      zh: 神经动力学
+      en: Neural dynamics
+    desc:
+      zh: 研究皮层环路中的非线性动力学过程如何支持预测与误差信号的生成。
+      en: How nonlinear dynamical processes in cortical circuits support prediction and error signal generation.
+
+  - title:
+      zh: 脉冲神经网络
+      en: Spiking neural networks
+    desc:
+      zh: 构建基于脉冲计算的神经网络模型，实现局部学习规则与高效时空信息处理。
+      en: Building spiking neural network models with local learning rules for efficient spatiotemporal processing.
+
+  - title:
+      zh: 神经形态计算
+      en: Neuromorphic computing
+    desc:
+      zh: 在类脑芯片上实现预测编码算法，探索低功耗、高效率的智能计算范式。
+      en: Implementing predictive coding algorithms on neuromorphic chips for low-power, high-efficiency computing.
+
+  - title:
+      zh: 具身智能验证
+      en: Embodied intelligence validation
+    desc:
+      zh: 在机器人平台和虚拟环境中验证类脑算法的感知与决策能力。
+      en: Validating brain-inspired algorithms on robotic platforms and virtual environments.
+
+keywords:
+  - { zh: 预测编码, en: Predictive Coding }
+  - { zh: 神经动力学, en: Neural Dynamics }
+  - { zh: 脉冲神经网络, en: Spiking Neural Networks }
+  - { zh: 神经形态计算, en: Neuromorphic Computing }
+
+# ==========================================
+# 图文混排：研究方向详解模块
+# ==========================================
+# 用于 research.astro 页面的左右交替排版。
+# image_side 可选：left（图在左）或 right（图在右）
+sections:
+  - title:
+      zh: 什么是“意料之外”？
+      en: Where does "Surprise" come from?
+    desc:
+      zh: 如图例，我们是如何从蓝莓松饼图像中分辨出吉娃娃的呢？两者在颜色和形状等低层特征上高度相似。一种假设是，大脑通过高层语义特征（狗 vs. 蛋糕）加以区分。那么，高层次的预测误差信号是否应该在初级感觉皮层中被检测到呢？
+      en: As shown in the example, how do we distinguish a Chihuahua from a blueberry muffin? They share highly similar low-level features like color and shape. One hypothesis is that the brain differentiates them through high-level semantic features (dog vs. cake). So, should high-level prediction error signals be detected in the primary sensory cortex?
+    image: /images/research/muffin-dog.png # 请替换为切好的图
+    image_side: left
+
+  - title:
+      zh: 神经科学机制
+      en: Neural mechanisms
+    desc:
+      zh: 我们通过单神经元电生理、多神经元动力学以及预测编码模型，揭示大脑如何形成和传递内部表征。研究预测误差如何在不同神经元类型、局部环路和跨脑区网络中产生和传播，从微观的离子通道、突触可塑性，到宏观的全脑网络机制。
+      en: Through single-neuron electrophysiology, multi-neuron dynamics, and predictive coding models, we reveal how the brain forms and transmits internal representations. We study how prediction errors are generated and propagated across different neuron types, local circuits, and brain-wide networks, from microscopic ion channels and synaptic plasticity to macroscopic brain networks.
+    image: /images/research/42_84.12cm16比9课题组图片2.jpg # 请替换为神经科学机制的切图
+    image_side: right
+
+  - title:
+      zh: 启发类脑智能算法
+      en: Brain-inspired intelligent algorithms
+    desc:
+      zh: 将神经科学原理转化为类脑算法。我们将预测编码机制迁移至脉冲神经网络（SNN），通过仿真模拟进行验证，最终在具身智能设备（如机器人平台）上实现低功耗、高效率的感知与决策，打通从脑机制到人工智能的闭环。
+      en: Translating neuroscience principles into brain-inspired algorithms. We migrate predictive coding mechanisms to Spiking Neural Networks (SNN), validate them through computer simulations, and finally implement low-power, high-efficiency perception and decision-making on embodied intelligence devices (e.g., robotic platforms), closing the loop from brain mechanisms to artificial intelligence.
+    image: /images/research/42_84.12cm16比9课题组图片3.jpg # 请替换为类脑智能算法的切图
+    image_side: left

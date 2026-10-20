@@ -1,0 +1,80 @@
+---
+import siteData from '../data/site.yml';
+
+interface Props {
+  lang: 'zh' | 'en';
+}
+const { lang } = Astro.props;
+
+const t = (zh, en) => lang === 'zh' ? zh : en;
+
+// 统一 base 前缀，防止 GitHub Pages 跳转 404
+const base = import.meta.env.BASE_URL;
+---
+
+<footer class="bg-primary text-white/80 mt-20">
+  <div class="container-content py-12">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- Lab Info -->
+      <div>
+        <h3 class="text-white text-lg font-serif font-bold mb-3">
+          {lang === 'zh' ? siteData.title_zh : siteData.title_en}
+        </h3>
+        <p class="text-sm text-white/60 mb-2">
+          {lang === 'zh' ? siteData.institute_zh : siteData.institute_en}
+        </p>
+        <!-- 删除了重复的第二行单位名称 -->
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <h4 class="text-white font-medium mb-3">{t('联系方式', 'Contact')}</h4>
+        <ul class="space-y-2 text-sm">
+          <li class="flex items-center gap-2">
+            <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M4 4h16c1 0 2 1 2 2v12c0 1-1 2-2 2H4c-1 0-2-1-2-2V6c0-1 1-2 2-2z" />
+              <polyline points="22,6 12,13 2,6" />
+            </svg>
+            <a href={`mailto:${siteData.email}`} class="hover:text-accent">{siteData.email}</a>
+          </li>
+          <li class="flex items-center gap-2">
+            <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.65 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+            </svg>
+            <a href={siteData.github} class="hover:text-accent" target="_blank" rel="noopener">GitHub</a>
+          </li>
+          <li class="flex items-center gap-2">
+            <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+            </svg>
+            <a href={siteData.scholar} class="hover:text-accent" target="_blank" rel="noopener">Google Scholar</a>
+          </li>
+          <li class="flex items-center gap-2">
+            <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10" />
+              <path d="M12 6v6l4 2" />
+            </svg>
+            <a href={siteData.orcid} class="hover:text-accent" target="_blank" rel="noopener">ORCID</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Nav -->
+      <div>
+        <h4 class="text-white font-medium mb-3">{t('快速导航', 'Quick Links')}</h4>
+        <ul class="space-y-2 text-sm">
+          <!-- 修复了链接，加上 base 前缀 -->
+          <li><a href={lang === 'en' ? `${base}en/research/` : `${base}research/`} class="hover:text-accent">{t('研究方向', 'Research')}</a></li>
+          <li><a href={lang === 'en' ? `${base}en/publications/` : `${base}publications/`} class="hover:text-accent">{t('研究成果', 'Publications')}</a></li>
+          <li><a href={lang === 'en' ? `${base}en/news/` : `${base}news/`} class="hover:text-accent">{t('新闻动态', 'News')}</a></li>
+          <li><a href={lang === 'en' ? `${base}en/people/` : `${base}people/`} class="hover:text-accent">{t('团队成员', 'People')}</a></li>
+          <li><a href={lang === 'en' ? `${base}en/join/` : `${base}join/`} class="hover:text-accent">{t('加入我们', 'Join Us')}</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-8 pt-6 border-t border-white/10 text-sm text-white/40">
+      <p>© {new Date().getFullYear()} {lang === 'zh' ? siteData.title_zh : siteData.title_en}. {t('保留所有权利。', 'All rights reserved.')}</p>
+    </div>
+  </div>
+</footer>

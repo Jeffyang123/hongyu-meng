@@ -1,0 +1,119 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import membersData from '../../data/members.yml';
+
+const lang = 'en';
+const pi = membersData[0];
+const currentMembers = membersData.filter(m => m.status === 'current' && m.id !== pi.id);
+---
+
+<BaseLayout lang={lang} current="/people" title="People & Alumni">
+  <!-- Header -->
+  <section class="neural-bg border-b border-primary/5">
+    <div class="container-content py-16">
+      <h1 class="text-4xl lg:text-5xl font-serif font-bold text-primary mb-4">People &amp; Alumni</h1>
+      <p class="text-lg text-primary/60">成员与校友</p>
+    </div>
+  </section>
+
+  <!-- PI Highlight -->
+  <section class="py-16">
+    <div class="container-content">
+      <h2 class="section-title">Principal Investigator</h2>
+      <div class="pi-card">
+        <div class="flex flex-col md:flex-row gap-8">
+          <div class="shrink-0 flex flex-col items-center">
+            <img
+              src={pi.photo}
+              alt={pi.name.en}
+              class="w-40 h-40 lg:w-48 lg:h-48 rounded-2xl object-cover shadow-card-hover"
+              onerror="this.src='/images/people/placeholder.svg'"
+            />
+            <span class="mt-3 px-3 py-1 bg-accent text-white text-xs rounded-full font-medium">PI</span>
+          </div>
+          <div class="flex-1">
+            <h3 class="text-2xl font-serif font-bold text-primary mb-1">{pi.name.en}</h3>
+            <p class="text-accent-dark font-medium mb-1">{pi.role.en}</p>
+            <p class="text-sm text-primary/40 mb-4 italic">{pi.name.zh} · {pi.role.zh}</p>
+
+            <div class="mb-4">
+              <p class="text-sm font-medium text-primary/50 mb-1">Education &amp; Experience</p>
+              <p class="text-primary/70 leading-relaxed">{pi.bio.en}</p>
+            </div>
+
+            <div class="mb-4">
+              <p class="text-sm font-medium text-primary/50 mb-1">Research Areas</p>
+              <p class="text-primary/80">{pi.research.en}</p>
+            </div>
+
+            {pi.links && (pi.links.email || pi.links.github || pi.links.scholar || pi.links.orcid) && (
+              <div class="flex flex-wrap gap-4 text-sm">
+                {pi.links.email && <a href={`mailto:${pi.links.email}`} class="link-accent">Email</a>}
+                {pi.links.github && <a href={pi.links.github} class="link-accent" target="_blank" rel="noopener">GitHub</a>}
+                {pi.links.scholar && <a href={pi.links.scholar} class="link-accent" target="_blank" rel="noopener">Google Scholar</a>}
+                {pi.links.orcid && <a href={pi.links.orcid} class="link-accent" target="_blank" rel="noopener">ORCID</a>}
+                <a href="/files/CV_Eng_092026.pdf" class="link-accent" target="_blank">CV (PDF) →</a>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Members (one-line-per-person) -->
+  <section class="py-16 bg-white border-y border-primary/5">
+    <div class="container-content">
+      <h2 class="section-title">Lab Members</h2>
+      <p class="section-subtitle">组成员</p>
+      <div class="card p-5 lg:p-8">
+        {currentMembers.map(m => (
+          <div class="member-row px-4">
+            <img src={m.photo} alt={m.name.en} class="member-row-photo" onerror="this.src='/images/people/placeholder.svg'"/>
+            <div class="member-row-body">
+              <div class="member-row-head">
+                <span class="member-row-name">{m.name.en}</span>
+                <span class="member-row-role">{m.role.en}</span>
+              </div>
+              <p class="member-row-research">{m.research?.en}</p>
+            </div>
+            {m.links?.email && <a href={`mailto:${m.links.email}`} class="member-row-action">✉</a>}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Alumni -->
+  <section class="py-16">
+    <div class="container-content">
+      <h2 class="section-title">Alumni</h2>
+      <p class="section-subtitle">校友</p>
+      <div class="card p-8 text-center text-primary/50">
+        <p>No alumni information yet; it will be shown here later.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Group Photos -->
+  <section class="py-16 bg-white border-y border-primary/5">
+    <div class="container-content">
+      <h2 class="section-title">Lab Life</h2>
+      <p class="section-subtitle">组内风采</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="img-placeholder aspect-[21/9] rounded-card overflow-hidden md:col-span-2">
+          <img src="/images/building-exterior.svg" alt="Institute exterior" loading="lazy" class="w-full h-full object-cover"/>
+          <span class="img-placeholder-label">Institute Exterior</span>
+        </div>
+        <div class="img-placeholder aspect-video rounded-card overflow-hidden">
+          <img src="/images/group-photo.svg" alt="Group photo" loading="lazy" class="w-full h-full object-cover"/>
+          <span class="img-placeholder-label">Group Photo</span>
+        </div>
+        <div class="img-placeholder aspect-video rounded-card overflow-hidden">
+          <img src="/images/lifestyle.svg" alt="Lab life" loading="lazy" class="w-full h-full object-cover"/>
+          <span class="img-placeholder-label">Lab Life</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

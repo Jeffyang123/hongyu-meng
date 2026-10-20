@@ -1,0 +1,22 @@
+title_zh: 预测编码与认知系统课题组
+title_en: Lab of Predictive Coding and Cognitive System
+pi_zh: 孟洪宇 博士 研究员
+pi_en: Dr. Hongyu Meng, Principal Investigator
+institute_zh: 广东省智能科学与技术研究院
+institute_en: Guangdong Institute of Intelligence Science and Technology
+email: join@example.edu.cn
+address_zh: 广东省智能科学与技术研究院
+address_en: Guangdong Institute of Intelligence Science and Technology
+github: https://github.com/predictive-coding-lab
+scholar: https://scholar.google.com/citations?user=placeholder
+orcid: https://orcid.org/0000-0000-0000-0000
+description_zh: 解析大脑预测与误差计算机制，推动高效类脑智能算法落地
+description_en: Decoding the brain's predictive and error-computing mechanisms to advance efficient brain-inspired AI
+
+# ==========================================
+# 首页“实验室简介”区域配置
+# ==========================================
+lab_intro:
+  desc_zh: 课题组依托智能院在类脑计算、类脑芯片及大规模神经网络方面的平台优势，聚焦预测编码的神经科学机制与类脑智能应用研究，以“解析大脑预测与误差计算机制，推动高效类脑智能算法落地”为核心目标。
+  desc_en: Relying on the platforms of GIIST in neuromorphic computing, brain-inspired chips, and large-scale neural networks, the lab focuses on the neural mechanisms of predictive coding and brain-inspired intelligence applications, with the core goal of "decoding the brain's predictive and error-computing mechanisms to advance efficient brain-inspired AI".
+  image: /images/research/42_84.12cm16比9课题组图片1.jpg  # 替换为你整理好的课题组全景长图路径

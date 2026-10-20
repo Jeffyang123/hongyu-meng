@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720">
+  <defs>
+    <linearGradient id="bg2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1a3a5c"/>
+      <stop offset="100%" stop-color="#0B1F33"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="720" fill="url(#bg2)"/>
+  <rect x="40" y="40" width="1200" height="640" fill="none" stroke="#19C3B1" stroke-width="2" stroke-dasharray="8 4" rx="8"/>
+  <text x="640" y="340" text-anchor="middle" fill="#19C3B1" font-size="28" font-family="sans-serif" opacity="0.8">实验室简介图片位 2</text>
+  <text x="640" y="380" text-anchor="middle" fill="#ffffff" font-size="18" font-family="sans-serif" opacity="0.4">PPT 页面大小 (1280×720) · 替换为实际图片</text>
+  <text x="640" y="410" text-anchor="middle" fill="#ffffff" font-size="14" font-family="sans-serif" opacity="0.3">将 PPT 内容导出为图片后放入 /public/images/lab-intro-2.png</text>
+</svg>

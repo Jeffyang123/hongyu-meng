@@ -1,0 +1,227 @@
+# ============================================================
+# 成员数据
+# ------------------------------------------------------------
+# 字段说明：
+#   status:   current（当前成员） / alumni（校友）
+#   featured: true  → 显示在首页“团队成员”区域
+#             false → 只在 /people 页显示
+#   showBio:  true  → 卡片里显示 bio
+#             false → 卡片里不显示 bio
+#   order:    排序，数字小的在前
+# ============================================================
+
+# ---------- PI ----------
+- id: meng-hongyu
+  name: { zh: 孟洪宇, en: Hongyu Meng }
+  role: { zh: 研究员、课题组组长, en: Principal Investigator }
+  photo: /images/people/meng-hongyu1.jpg
+  photo_life: /images/people/meng-hongyu1.jpg
+  research:
+    zh: 预测编码、计算神经科学、类脑智能
+    en: Predictive coding, computational neuroscience, brain-inspired AI
+  bio:
+    zh: 北京大学应用数学学士，西北大学应用数学博士，纽约大学神经科学中心博士后，2026年8月起任广东省智能科学与技术研究院研究员。
+    en: BS in Applied Mathematics from Peking University, PhD from Northwestern University, postdoctoral research at NYU Neuroscience Center, Principal Investigator at GIIST since August 2026.
+  links:
+    scholar: ""
+    github: ""
+    orcid: ""
+    email: menghongyu@gdiist.cn
+  status: current
+  featured: true
+  showBio: true
+  order: 1
+
+# ---------- 首页展示成员 (featured: true) ----------
+- id: member-02
+  name: { zh: 靳语飞, en: Yufei Jin }
+  role: { zh: 研究助理, en: Research Assistant }
+  photo: /images/people/3.png
+  research:
+    zh: 预测编码、类脑智能
+    en: Predictive coding, brain-inspired intelligence
+  bio:
+    zh: 主要研究方向为预测编码理论与类脑智能算法，关注大脑信息处理的层级预测机制及其在计算模型中的应用。
+    en: Research focuses on predictive coding theory and brain-inspired intelligence algorithms, exploring hierarchical predictive mechanisms of brain information processing.
+  links: { scholar: "", github: "", orcid: "", email: "" }
+  status: current
+  featured: true
+  showBio: true
+  order: 3
+
+- id: member-03
+  name: { zh: 杨元平, en: Yuanping Yang }
+  role: { zh: 研究助理, en: Research Assistant }
+  photo: /images/people/4.png
+  research:
+    zh: 脉冲神经网络、具身智能
+    en: Spiking neural networks, embodied intelligence
+  bio:
+    zh: 主要研究方向为脉冲神经网络与具身智能，探索生物启发的时空信息处理机制及其在机器人感知与决策中的应用。
+    en: Research focuses on spiking neural networks and embodied intelligence, exploring biologically inspired spatiotemporal information processing mechanisms and their applications in robotic perception and decision-making.
+  links: { scholar: "", github: "", orcid: "", email: "" }
+  status: current
+  featured: true
+  showBio: true
+  order: 4
+
+- id: member-04
+  name: { zh: 吴伟玮, en: Weiwei Wu }
+  role: { zh: 研究助理, en: Research Assistant }
+  photo: /images/people/5.png
+  research:
+    zh: 计算神经科学、类脑模型
+    en: Computational neuroscience, brain-inspired models
+  bio:
+    zh: 主要研究方向为计算神经科学与类脑模型，关注神经网络的计算原理及其在智能系统中的应用。
+    en: Research focuses on computational neuroscience and brain-inspired models, investigating computational principles of neural networks and their applications in intelligent systems.
+  links: { scholar: "", github: "", orcid: "", email: "" }
+  status: current
+  featured: true
+  showBio: true
+  order: 5
+
+- id: member-05
+  name: { zh: 徐奕昕, en: Yixin Xu }
+  role: { zh: 实习生, en: Research Intern }
+  photo: /images/people/6.png
+  research:
+    zh: 计算神经科学、类脑智能
+    en: Computational neuroscience, brain-inspired AI
+  bio:
+    zh: 南开大学生物科学学士，香港科技大学人工智能硕士在读。
+    en: BS in Biological Sciences from Nankai University; MS student in Artificial Intelligence at HKUST.
+  links: { scholar: "", github: "", orcid: "", email: "" }
+  status: current
+  featured: true
+  showBio: true
+  order: 6
+
+- id: member-06
+  name: { zh: 吴启元, en: Qiyuan Wu }
+  role: { zh: 实习生, en: Research Intern }
+  photo: /images/people/7.png
+  research:
+    zh: 预测编码建模
+    en: Predictive coding modeling
+  bio:
+    zh: 研究方向占位，请替换为真实信息。
+    en: Placeholder bio, please replace with real information.
+  links: { scholar: "", github: "", orcid: "", email: "" }
+  status: current
+  featured: true
+  showBio: true
+  order: 7
+
+- id: member-07
+  name: { zh: 吴轹城, en: Licheng Wu }
+  role: { zh: 实习生, en: Research Intern }
+  photo: /images/people/8.png
+  research:
+    zh: 具身智能验证
+    en: Embodied intelligence validation
+  bio:
+    zh: 研究方向占位，请替换为真实信息。
+    en: Placeholder bio, please replace with real information.
+  links: { scholar: "", github: "", orcid: "", email: "" }
+  status: current
+  featured: true
+  showBio: true
+  order: 8
+
+# ---------- 其他成员 / 占位成员 (只在 /people 页展示) ----------
+- id: member-01
+  name: { zh: 成员01, en: Member 01 }
+  role: { zh: 博士后, en: Postdoc }
+  photo: /images/people/placeholder-1.jpg
+  research:
+    zh: 预测误差计算
+    en: Prediction error computation
+  bio:
+    zh: 研究方向占位，请替换为真实信息。
+    en: Placeholder bio, please replace with real information.
+  links: { scholar: "", github: "", orcid: "", email: "" }
+  status: current
+  featured: false
+  showBio: false
+  order: 2
+
+- id: member-08
+  name: { zh: 成员08, en: Member 08 }
+  role: { zh: 研究助理, en: Research Assistant }
+  photo: /images/people/placeholder-8.jpg
+  research:
+    zh: 神经影像数据处理
+    en: Neuroimaging data processing
+  bio:
+    zh: 研究方向占位，请替换为真实信息。
+    en: Placeholder bio, please replace with real information.
+  links: { scholar: "", github: "", orcid: "", email: "" }
+  status: current
+  featured: false
+  showBio: false
+  order: 9
+
+- id: member-09
+  name: { zh: 成员09, en: Member 09 }
+  role: { zh: 本科毕设, en: Undergraduate Researcher }
+  photo: /images/people/placeholder-9.jpg
+  research:
+    zh: 类脑算法实现
+    en: Brain-inspired algorithm implementation
+  bio:
+    zh: 研究方向占位，请替换为真实信息。
+    en: Placeholder bio, please replace with real information.
+  links: { scholar: "", github: "", orcid: "", email: "" }
+  status: current
+  featured: false
+  showBio: false
+  order: 10
+
+- id: member-10
+  name: { zh: 成员10, en: Member 10 }
+  role: { zh: 本科毕设, en: Undergraduate Researcher }
+  photo: /images/people/placeholder-10.jpg
+  research:
+    zh: 仿真平台开发
+    en: Simulation platform development
+  bio:
+    zh: 研究方向占位，请替换为真实信息。
+    en: Placeholder bio, please replace with real information.
+  links: { scholar: "", github: "", orcid: "", email: "" }
+  status: current
+  featured: false
+  showBio: false
+  order: 11
+
+- id: member-11
+  name: { zh: 成员11, en: Member 11 }
+  role: { zh: 客座学生, en: Visiting Student }
+  photo: /images/people/placeholder-11.jpg
+  research:
+    zh: 计算神经科学
+    en: Computational neuroscience
+  bio:
+    zh: 研究方向占位，请替换为真实信息。
+    en: Placeholder bio, please replace with real information.
+  links: { scholar: "", github: "", orcid: "", email: "" }
+  status: current
+  featured: false
+  showBio: false
+  order: 12
+
+- id: member-12
+  name: { zh: 成员12, en: Member 12 }
+  role: { zh: 客座学生, en: Visiting Student }
+  photo: /images/people/placeholder-12.jpg
+  research:
+    zh: 机器学习与神经科学
+    en: Machine learning and neuroscience
+  bio:
+    zh: 研究方向占位，请替换为真实信息。
+    en: Placeholder bio, please replace with real information.
+  links: { scholar: "", github: "", orcid: "", email: "" }
+  status: current
+  featured: false
+  showBio: false
+  order: 13

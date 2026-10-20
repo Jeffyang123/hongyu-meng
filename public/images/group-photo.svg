@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <defs>
+    <linearGradient id="grp" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#19C3B1" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#0B1F33" stop-opacity="0.05"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#grp)"/>
+  <circle cx="200" cy="300" r="50" fill="#19C3B1" opacity="0.2"/>
+  <circle cx="320" cy="280" r="50" fill="#19C3B1" opacity="0.2"/>
+  <circle cx="440" cy="300" r="50" fill="#19C3B1" opacity="0.2"/>
+  <circle cx="560" cy="280" r="50" fill="#19C3B1" opacity="0.2"/>
+  <circle cx="680" cy="300" r="50" fill="#19C3B1" opacity="0.2"/>
+  <text x="400" y="420" text-anchor="middle" fill="#0B1F33" font-size="18" font-family="sans-serif" opacity="0.4">组成员合影 · 替换为实际照片</text>
+  <text x="400" y="450" text-anchor="middle" fill="#0B1F33" font-size="14" font-family="sans-serif" opacity="0.3">放入 /public/images/group-photo.jpg</text>
+</svg>

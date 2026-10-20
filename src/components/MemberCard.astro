@@ -1,0 +1,81 @@
+---
+interface Props {
+  member: any;
+  lang: 'zh' | 'en';
+  isPI?: boolean;
+}
+const { member, lang, isPI = false } = Astro.props;
+
+// 统一 base 前缀，解决 GitHub Pages 路径问题
+const base = import.meta.env.BASE_URL;
+const asset = (p) => (p ? `${base}${String(p).replace(/^\//, '')}` : p);
+
+const name = lang === 'zh' ? member.name.zh : member.name.en;
+const role = lang === 'zh' ? member.role.zh : member.role.en;
+const research = lang === 'zh' ? member.research?.zh : member.research?.en;
+const bio = lang === 'zh' ? member.bio?.zh : member.bio?.en;
+
+// 兼容 YAML 里的 showBio 字段，默认 true（PI 强制显示）
+const showBio = member.showBio !== false || isPI;
+
+// 图片路径处理
+const photo = asset(member.photo);
+const placeholder = `${base}images/people/placeholder.svg`;
+
+const hasLinks = member.links && (
+  member.links.email || member.links.github || member.links.scholar || member.links.orcid
+);
+---
+
+<article class={`card card-hover p-6 text-center flex flex-col ${isPI ? 'ring-2 ring-accent/30' : ''}`}>
+  <div class="relative w-28 h-28 mx-auto mb-4">
+    <img
+      src={photo}
+      alt={name}
+      class="w-28 h-28 rounded-full object-cover border-2 border-surface"
+      loading="lazy"
+      onerror={`this.src='${placeholder}'`}
+    />
+    {isPI && (
+      <span class="absolute -bottom-1 -right-1 px-2 py-0.5 bg-accent text-white text-xs rounded-full font-medium">
+        PI
+      </span>
+    )}
+  </div>
+  
+  <h3 class="text-lg font-serif font-bold text-primary mb-1">{name}</h3>
+  <p class="text-sm text-accent-dark font-medium mb-2">{role}</p>
+  
+  {research && <p class="text-sm text-primary/60 mb-2">{research}</p>}
+  
+  {showBio && bio && (
+    <p class={`text-xs text-primary/50 leading-relaxed mt-2 ${isPI ? 'text-left' : 'text-center'}`}>
+      {bio}
+    </p>
+  )}
+  
+  {hasLinks && (
+    <div class="flex justify-center gap-3 mt-4 pt-3 border-t border-primary/5 mt-auto">
+      {member.links.email && (
+        <a href={`mailto:${member.links.email}`} class="text-primary/40 hover:text-accent transition-colors" aria-label="Email">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1 0 2 1 2 2v12c0 1-1 2-2 2H4c-1 0-2-1-2-2V6c0-1 1-2 2-2z" /><polyline points="22,6 12,13 2,6" /></svg>
+        </a>
+      )}
+      {member.links.github && (
+        <a href={member.links.github} class="text-primary/40 hover:text-accent transition-colors" target="_blank" rel="noopener" aria-label="GitHub">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.65 6.44 7A3.37 3.37 0 0 0 9 18.13V22" /></svg>
+        </a>
+      )}
+      {member.links.scholar && (
+        <a href={member.links.scholar} class="text-primary/40 hover:text-accent transition-colors" target="_blank" rel="noopener" aria-label="Scholar">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" /></svg>
+        </a>
+      )}
+      {member.links.orcid && (
+        <a href={member.links.orcid} class="text-primary/40 hover:text-accent transition-colors" target="_blank" rel="noopener" aria-label="ORCID">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><path d="M12 6v6l4 2" /></svg>
+        </a>
+      )}
+    </div>
+  )}
+</article>

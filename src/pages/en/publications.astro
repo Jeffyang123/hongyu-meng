@@ -1,0 +1,68 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import publicationsData from '../../data/publications.yml';
+
+const lang = 'en';
+
+// 统一 base 前缀
+const base = import.meta.env.BASE_URL;
+
+// 智能处理链接：外链原样返回，本地绝对路径加 base
+const link = (url) => {
+  if (!url) return url;
+  const s = String(url);
+  if (/^(https?:|mailto:|tel:)/i.test(s)) return s;
+  return `${base}${s.replace(/^\//, '')}`;
+};
+
+const pubsByYear = {};
+publicationsData.forEach(p => {
+  if (!pubsByYear[p.year]) pubsByYear[p.year] = [];
+  pubsByYear[p.year].push(p);
+});
+const years = Object.keys(pubsByYear).sort((a, b) => b - a);
+---
+
+<BaseLayout lang={lang} current="/en/publications" title="Publications">
+  <section class="neural-bg border-b border-primary/5">
+    <div class="container-content py-16">
+      <h1 class="text-4xl lg:text-5xl font-serif font-bold text-primary mb-4">Publications</h1>
+      <p class="text-lg text-primary/60">研究成果</p>
+    </div>
+  </section>
+
+  <section class="py-16">
+    <div class="container-content">
+      {years.map(year => (
+        <div class="mb-10">
+          <h2 class="text-2xl font-serif font-bold text-accent-dark mb-4 border-l-4 border-accent pl-4">
+            {year}
+          </h2>
+          <div class="card p-5 lg:p-8">
+            {pubsByYear[year].map(pub => (
+              <div class={`list-row px-3 ${pub.highlight ? 'bg-accent/5 rounded-lg' : ''}`}>
+                <span class="list-row-date">{pub.year}</span>
+                <div class="flex-1 min-w-0">
+                  <p class="text-base text-primary/80 leading-relaxed break-words">
+                    {pub.highlight && <span class="text-accent-dark font-bold mr-1">★</span>}
+                    {pub.title}
+                  </p>
+                  <p class="text-xs text-primary/45 mt-1 leading-relaxed break-words">
+                    {Array.isArray(pub.authors) ? pub.authors.join(', ') : pub.authors}
+                    <span class="italic"> — {pub.venue}{pub.volume ? `, ${pub.volume}` : ''}{pub.pages ? `:${pub.pages}` : ''}</span>
+                  </p>
+                </div>
+                <div class="flex gap-3 shrink-0 text-sm pt-0.5">
+                  <!-- 使用 link() 处理，确保本地 PDF 路径正确 -->
+                  {pub.doi && <a href={link(pub.doi)} class="text-accent-dark hover:text-accent" target="_blank" rel="noopener">DOI</a>}
+                  {pub.pdf && <a href={link(pub.pdf)} class="text-accent-dark hover:text-accent" target="_blank" rel="noopener">PDF</a>}
+                  {pub.code && <a href={link(pub.code)} class="text-accent-dark hover:text-accent" target="_blank" rel="noopener">Code</a>}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

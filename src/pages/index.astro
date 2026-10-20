@@ -1,0 +1,239 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import siteData from '../data/site.yml';
+import membersData from '../data/members.yml';
+import publicationsData from '../data/publications.yml';
+import newsData from '../data/news.yml';
+import researchData from '../data/research.yml';
+
+const lang = 'zh';
+
+// 统一 base 前缀，解决 GitHub Pages 路径问题
+const base = import.meta.env.BASE_URL;
+const asset = (p) => (p ? `${base}${String(p).replace(/^\//, '')}` : p);
+
+const pi = membersData[0];
+const teamMembers = membersData.filter(m => m.status === 'current' && m.id !== pi.id);
+const recentPubs = publicationsData.slice(0, 5);
+const recentNews = [...newsData].sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 5);
+
+const newsTypeColors = {
+  paper: 'bg-accent/10 text-accent-dark',
+  join: 'bg-coral/10 text-coral-dark',
+  recruit: 'bg-coral/10 text-coral-dark',
+  conference: 'bg-primary/10 text-primary',
+  team: 'bg-primary/10 text-primary',
+};
+const newsTypeLabels = { paper: '论文', join: '加入', recruit: '招生', conference: '会议', team: '团队' };
+---
+
+<BaseLayout lang={lang} current="/">
+  <!-- ===== Hero: PI + Lab ===== -->
+  <section class="relative overflow-hidden neural-bg">
+    <div class="absolute inset-0 grid-pattern opacity-50"></div>
+    <div class="container-content relative py-16 lg:py-24">
+      <div class="grid lg:grid-cols-5 gap-10 items-center">
+        <!-- Lab Info (3/5) -->
+        <div class="lg:col-span-3 fade-in-up">
+          <div class="flex items-center gap-3 mb-5">
+            <img src={asset('/images/logo/institute-logo.png')} alt="logo" class="w-10 h-10 object-contain" onerror="this.style.display='none'"/>
+            <p class="text-accent-dark font-medium tracking-wide">{siteData.institute_zh}</p>
+          </div>
+          <h1 class="text-3xl lg:text-5xl font-serif font-bold text-primary mb-3 leading-tight">
+            {siteData.title_zh}
+          </h1>
+          <p class="text-base lg:text-lg text-primary/50 mb-4 italic">{siteData.title_en}</p>
+          <p class="text-base lg:text-lg text-primary/70 mb-8 leading-relaxed max-w-xl">
+            {siteData.description_zh}
+          </p>
+          <div class="flex flex-wrap gap-3">
+            <a href={`${base}research/`} class="btn-primary">
+              研究方向
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+            </a>
+            <a href={`${base}publications/`} class="btn-outline">Publications</a>
+            <a href={`${base}join/`} class="btn-accent">加入我们</a>
+          </div>
+        </div>
+        <!-- PI Card (2/5) -->
+        <div class="lg:col-span-2 fade-in-up">
+          <div class="pi-card">
+            <div class="flex flex-col items-center text-center">
+              <img
+                src={asset(pi.photo)}
+                alt={pi.name.zh}
+                class="pi-photo-large mb-4"
+                onerror={`this.src='${base}images/people/placeholder.svg'`}
+              />
+              <h2 class="text-xl font-serif font-bold text-primary">{pi.name.zh}</h2>
+              <p class="text-sm text-accent-dark font-medium mb-3">{pi.role.zh}</p>
+              <p class="text-sm text-primary/60 leading-relaxed text-left w-full">
+                {pi.bio.zh}
+              </p>
+              <div class="flex gap-3 mt-4 text-sm">
+                {pi.links?.email && <a href={`mailto:${pi.links.email}`} class="link-accent">Email</a>}
+                <a href={`${base}people/`} class="link-accent">详细简历 →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Lab Intro + Image Gallery ===== -->
+  <section class="py-16 bg-white border-y border-primary/5">
+    <div class="container-content">
+      <h2 class="section-title">实验室简介</h2>
+      <p class="section-subtitle">About the Lab</p>
+
+      <div class="grid lg:grid-cols-2 gap-10 lg:gap-14 items-start">
+        <!-- Intro Text -->
+        <div>
+          <p class="text-lg text-primary/70 leading-relaxed mb-6">
+            {siteData.lab_intro?.desc_zh || researchData.mission.zh}
+          </p>
+          <!-- Keywords -->
+          <div class="flex flex-wrap gap-2">
+            {researchData.keywords.map(kw => (
+              <span class="tag">{kw.zh}</span>
+            ))}
+          </div>
+        </div>
+        <!-- Research Goals -->
+        <div class="space-y-4">
+          {researchData.goals.map((goal, i) => (
+            <div class="flex gap-4 bg-surface rounded-card p-5">
+              <span class="w-9 h-9 rounded-lg bg-accent/10 text-accent-dark font-bold flex items-center justify-center shrink-0">{i + 1}</span>
+              <div>
+                <p class="font-medium text-primary mb-1">{goal.title.zh}</p>
+                <p class="text-sm text-primary/60 leading-relaxed">{goal.desc.zh}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- 真实课题组大图展示（替换了原有的 .svg 占位图） -->
+      {siteData.lab_intro?.image ? (
+        <div class="mt-12 rounded-2xl overflow-hidden shadow-lg border border-primary/10 bg-surface">
+          <img src={asset(siteData.lab_intro.image)} alt="课题组全景介绍" class="w-full h-auto object-contain" loading="lazy"/>
+        </div>
+      ) : null}
+    </div>
+  </section>
+
+  <!-- ===== Team Preview (one-line-per-person) ===== -->
+  <section class="py-16">
+    <div class="container-content">
+      <div class="flex items-end justify-between mb-6">
+        <div>
+          <h2 class="section-title">团队成员</h2>
+          <p class="section-subtitle">Our Team</p>
+        </div>
+        <a href={`${base}people/`} class="link-accent text-sm font-medium">查看全部 →</a>
+      </div>
+      <div class="card p-5 lg:p-8">
+        <!-- PI row -->
+        <div class="member-row rounded-xl px-4 bg-accent/5">
+          <img src={asset(pi.photo)} alt={pi.name.zh} class="member-row-photo" onerror={`this.src='${base}images/people/placeholder.svg'`}/>
+          <div class="member-row-body">
+            <div class="member-row-head">
+              <span class="member-row-name">{pi.name.zh}</span>
+              <span class="member-row-role">PI · {pi.role.zh}</span>
+            </div>
+            <p class="member-row-research">{pi.research.zh}</p>
+          </div>
+        </div>
+        <!-- Member rows -->
+        {teamMembers.slice(0, 8).map(m => (
+          <div class="member-row px-4">
+            <img src={asset(m.photo)} alt={m.name.zh} class="member-row-photo" onerror={`this.src='${base}images/people/placeholder.svg'`}/>
+            <div class="member-row-body">
+              <div class="member-row-head">
+                <span class="member-row-name">{m.name.zh}</span>
+                <span class="member-row-role">{m.role.zh}</span>
+              </div>
+              <p class="member-row-research">{m.research?.zh}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Recent Publications (one-line-per-item) ===== -->
+  <section class="py-16 bg-white border-y border-primary/5">
+    <div class="container-content">
+      <div class="flex items-end justify-between mb-6">
+        <div>
+          <h2 class="section-title">近期论文</h2>
+          <p class="section-subtitle">Recent Publications</p>
+        </div>
+        <a href={`${base}publications/`} class="link-accent text-sm font-medium">查看全部 →</a>
+      </div>
+      <div class="card p-4 lg:p-6">
+        {recentPubs.map(pub => (
+          <div class="list-row px-3">
+            <span class="list-row-date">{pub.year}</span>
+            <span class="list-row-title">
+              {pub.title}
+              <span class="text-primary/40 text-xs ml-2">— {Array.isArray(pub.authors) ? pub.authors.join(', ') : pub.authors}</span>
+            </span>
+            <span class="list-row-meta italic">{pub.venue}</span>
+            {pub.doi && <a href={pub.doi} class="text-accent-dark hover:text-accent text-sm shrink-0" target="_blank" rel="noopener">DOI →</a>}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== News (one-line-per-item) ===== -->
+  <section class="py-16">
+    <div class="container-content">
+      <div class="flex items-end justify-between mb-6">
+        <div>
+          <h2 class="section-title">新闻动态</h2>
+          <p class="section-subtitle">Latest News</p>
+        </div>
+        <a href={`${base}news/`} class="link-accent text-sm font-medium">查看全部 →</a>
+      </div>
+      <div class="card p-4 lg:p-6">
+        {recentNews.map(item => (
+          <div class="list-row px-3">
+            <span class="list-row-date">{item.date}</span>
+            <span class={`list-row-tag ${newsTypeColors[item.type] || 'bg-primary/10 text-primary'}`}>{newsTypeLabels[item.type] || item.type}</span>
+            <span class="list-row-title">{item.title.zh}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Recruitment CTA (simplified) ===== -->
+  <section class="py-16 bg-primary text-white">
+    <div class="container-content">
+      <div class="grid lg:grid-cols-2 gap-10 items-center">
+        <div>
+          <h2 class="text-2xl lg:text-3xl font-serif font-bold mb-4">长期招聘</h2>
+          <p class="text-lg text-white/70 mb-4 leading-relaxed">
+            课题组长期招聘博士、博士后、研究生、科研助理及实习生，欢迎有志于计算神经科学与类脑智能的同学加入。
+          </p>
+          <div class="flex flex-wrap gap-2 mb-6">
+            {['博士', '博士后', '研究生', '科研助理', '实习生'].map(p => (
+              <span class="px-3 py-1 bg-white/10 rounded-full text-sm text-white/80">{p}</span>
+            ))}
+          </div>
+          <a href={`${base}join/`} class="btn-accent inline-flex items-center gap-2">
+            查看招聘详情
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+          </a>
+        </div>
+        <!-- 移除了原有的 .svg 假图，替换为真实的展板图（可选，如果没有请把整个 div 删掉） -->
+        <div class="rounded-2xl overflow-hidden shadow-2xl border border-white/10 bg-white/5">
+          <img src={asset('/images/research/screen-banner.jpg')} alt="课题组展板" class="w-full h-auto object-cover" onerror="this.parentElement.style.display='none'"/>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

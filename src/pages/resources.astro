@@ -1,0 +1,58 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const lang = 'zh';
+
+const resources = [
+  { icon: 'code', title: '开源代码', en: 'Open Source Code', desc: '课题组开发的预测编码、脉冲神经网络相关代码库。', links: [{ label: 'GitHub', href: 'https://github.com/predictive-coding-lab' }] },
+  { icon: 'data', title: '公开数据', en: 'Public Data', desc: '电生理、神经影像及仿真数据集，支持开放科学。', links: [{ label: '数据仓库', href: '#' }] },
+  { icon: 'paper', title: '预印本', en: 'Preprints', desc: '课题组最新研究预印本，抢先了解工作进展。', links: [{ label: 'arXiv', href: 'https://arxiv.org' }, { label: 'bioRxiv', href: 'https://biorxiv.org' }] },
+  { icon: 'tool', title: '工具与平台', en: 'Tools & Platforms', desc: '仿真平台、分析工具及可视化软件。', links: [{ label: '工具列表', href: '#' }] },
+  { icon: 'collab', title: '合作', en: 'Collaboration', desc: '与国内外实验室的合作项目与交流机会。', links: [{ label: '合作意向', href: 'mailto:join@example.edu.cn' }] },
+  { icon: 'teach', title: '教学资源', en: 'Teaching', desc: '课程讲义、教程及学习资料。', links: [{ label: '教学页面', href: '#' }] },
+];
+
+const iconPaths = {
+  code: 'M16 18l6-6-6-6M8 6l-6 6 6 6',
+  data: 'M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z',
+  paper: 'M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z M14 2v6h6 M16 13H8 M16 17H8 M10 9H8',
+  tool: 'M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z',
+  collab: 'M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2 M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z M23 21v-2a4 4 0 0 0-3-3.87 M16 3.13a4 4 0 0 1 0 7.75',
+  teach: 'M22 10v6M2 10l10-5 10 5-10 5z M6 12v5c0 1 2 3 6 3s6-2 6-3v-5',
+};
+---
+
+<BaseLayout lang={lang} current="/resources" title="资源与开放科学">
+  <section class="neural-bg border-b border-primary/5">
+    <div class="container-content py-16">
+      <h1 class="text-4xl lg:text-5xl font-serif font-bold text-primary mb-4">资源与开放科学</h1>
+      <p class="text-lg text-primary/60">Resources & Open Science</p>
+    </div>
+  </section>
+
+  <section class="py-16">
+    <div class="container-content">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {resources.map(r => (
+          <div class="card card-hover p-8">
+            <div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-accent-dark" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d={iconPaths[r.icon]} />
+              </svg>
+            </div>
+            <h3 class="text-xl font-serif font-bold text-primary mb-2">{r.title}</h3>
+            <p class="text-sm text-primary/50 mb-3">{r.en}</p>
+            <p class="text-primary/70 leading-relaxed mb-4">{r.desc}</p>
+            <div class="flex flex-wrap gap-3">
+              {r.links.map(link => (
+                <a href={link.href} class="link-accent text-sm font-medium" target="_blank" rel="noopener">
+                  {link.label} →
+                </a>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

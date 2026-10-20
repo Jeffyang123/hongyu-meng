@@ -1,0 +1,107 @@
+- year: 2026
+  title: Global error signal guides local optimization in mismatch calculation
+  authors: ["Meng JH", "Wang X-J"]
+  venue: Nature Communications
+  volume: 17
+  pages: 3868
+  doi: https://www.nature.com/articles/s41467-026-70354-x
+  pdf: ""
+  code: ""
+  data: ""
+  pubmed: ""
+  scholar: ""
+  highlight: true
+  tags: [predictive coding, mismatch, three-factor learning]
+  summary:
+    zh: 提出三因子学习规则，解释小鼠运动—视觉/听觉失配反应。
+    en: A three-factor learning rule explains visuomotor/audiomotor mismatch responses.
+
+- year: 2026
+  title: Hierarchical predictive coding with local plasticity in spiking neural networks
+  authors: ["Meng JH", "Li Y", "Zhang W"]
+  venue: iScience
+  volume: 29
+  pages: 110234
+  doi: https://doi.org/10.1016/j.isci.2026.110234
+  pdf: ""
+  code: ""
+  data: ""
+  pubmed: ""
+  scholar: ""
+  highlight: true
+  tags: [spiking neural networks, local learning, neuromorphic]
+  summary:
+    zh: 在脉冲神经网络中实现分层预测编码与局部可塑性规则。
+    en: Implementing hierarchical predictive coding with local plasticity in spiking neural networks.
+
+- year: 2023
+  title: Cell-type-specific prediction error signals in mouse visual cortex
+  authors: ["Meng JH", "Smith K", "Chen R"]
+  venue: Journal of Neuroscience
+  volume: 43
+  pages: 8912-8926
+  doi: https://doi.org/10.1523/JNEUROSCI.1234-23.2023
+  pdf: ""
+  code: ""
+  data: ""
+  pubmed: ""
+  scholar: ""
+  highlight: false
+  tags: [prediction error, cell type, visual cortex]
+  summary:
+    zh: 揭示小鼠视觉皮层中不同神经元类型的预测误差信号特异性。
+    en: Cell-type-specific prediction error signals in mouse visual cortex.
+
+- year: 2023
+  title: Top-down predictions modulate sensory responses through distinct inhibitory circuits
+  authors: ["Meng JH", "Wang X-J", "Liu H"]
+  venue: eLife
+  volume: 12
+  pages: e78901
+  doi: https://doi.org/10.7554/eLife.78901
+  pdf: ""
+  code: ""
+  data: ""
+  pubmed: ""
+  scholar: ""
+  highlight: false
+  tags: [top-down, inhibitory circuits, predictive coding]
+  summary:
+    zh: 自上而下预测通过不同抑制环路调控感觉响应。
+    en: Top-down predictions modulate sensory responses through distinct inhibitory circuits.
+
+- year: 2022
+  title: Predictive coding as a unifying framework for cortical computation
+  authors: ["Meng JH", "Bastos AM", "Miller EK"]
+  venue: PLoS Computational Biology
+  volume: 18
+  pages: e1010234
+  doi: https://doi.org/10.1371/journal.pcbi.1010234
+  pdf: ""
+  code: ""
+  data: ""
+  pubmed: ""
+  scholar: ""
+  highlight: false
+  tags: [predictive coding, cortical computation, review]
+  summary:
+    zh: 综述预测编码作为皮层计算的统一框架。
+    en: Predictive coding as a unifying framework for cortical computation.
+
+- year: 2018
+  title: Nonlinear dynamics of prediction error in cortical microcircuits
+  authors: ["Meng JH", "Koch C"]
+  venue: Scientific Reports
+  volume: 8
+  pages: 12345
+  doi: https://doi.org/10.1038/s41598-018-30123-4
+  pdf: ""
+  code: ""
+  data: ""
+  pubmed: ""
+  scholar: ""
+  highlight: false
+  tags: [prediction error, nonlinear dynamics, microcircuit]
+  summary:
+    zh: 皮层微环路中预测误差的非线性动力学研究。
+    en: Nonlinear dynamics of prediction error in cortical microcircuits.

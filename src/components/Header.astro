@@ -1,0 +1,115 @@
+---
+interface Props {
+  lang: 'zh' | 'en';
+  current: string;
+}
+const { lang, current } = Astro.props;
+
+// 统一 base 前缀，GitHub Pages 上为 /hongyu-meng/
+const base = import.meta.env.BASE_URL;
+
+// 导航项 href 改为相对片段（不带开头的斜杠）
+const navItems = [
+  { id: 'home', zh: '首页', en: 'Home', href: '' },
+  { id: 'research', zh: '研究方向', en: 'Research', href: 'research/' },
+  { id: 'people', zh: '成员与校友', en: 'People', href: 'people/' },
+  { id: 'publications', zh: '研究成果', en: 'Publications', href: 'publications/' },
+  { id: 'news', zh: '新闻动态', en: 'News', href: 'news/' },
+  { id: 'join', zh: '加入我们', en: 'Join Us', href: 'join/' },
+];
+
+const isEn = lang === 'en';
+const prefix = isEn ? 'en/' : '';
+
+// 从 current 提取相对路径，用于判断当前激活状态和语言切换
+// 比如 current 是 "/people" 或 "/en/people" 或 "/"
+const currentRel = current
+  .replace(/^\/+/, '')
+  .replace(/^en\/?/, '')
+  .replace(/\/+$/, '');
+
+// 判断当前导航项是否激活
+const isActive = (item) => {
+  const itemKey = item.href.replace(/\/+$/, '');
+  return currentRel === itemKey;
+};
+
+// 语言切换路径：
+//  中文页 → /hongyu-meng/en/xxx/
+//  英文页 → /hongyu-meng/xxx/
+const switchLangPath = isEn
+  ? `${base}${currentRel}${currentRel ? '/' : ''}`
+  : `${base}en/${currentRel}${currentRel ? '/' : ''}`;
+---
+
+<header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-primary/5">
+  <div class="container-content flex items-center justify-between h-16">
+    <!-- Logo -->
+    <a href={`${base}`} class="flex items-center gap-3 shrink-0">
+      <div class="w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
+        <svg class="w-6 h-6 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" />
+          <circle cx="12" cy="12" r="3" />
+        </svg>
+      </div>
+      <span class="hidden sm:block font-serif font-bold text-primary text-lg leading-tight">
+        {lang === 'zh' ? '预测编码与认知系统' : 'Predictive Coding Lab'}
+      </span>
+    </a>
+
+    <!-- Desktop Nav -->
+    <nav class="hidden lg:flex items-center gap-1">
+      {navItems.map(item => (
+        <a
+          href={`${base}${prefix}${item.href}`}
+          class={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+            isActive(item)
+              ? 'text-accent-dark bg-accent/10'
+              : 'text-primary/70 hover:text-primary hover:bg-primary/5'
+          }`}
+        >
+          {lang === 'zh' ? item.zh : item.en}
+        </a>
+      ))}
+    </nav>
+
+    <!-- Right: Language Switch + Mobile Menu -->
+    <div class="flex items-center gap-2">
+      <a
+        href={switchLangPath}
+        class="px-3 py-1.5 rounded-lg text-sm font-medium border border-primary/15 text-primary/70 hover:border-accent hover:text-accent-dark transition-all"
+      >
+        {lang === 'zh' ? 'EN' : '中文'}
+      </a>
+      <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-lg hover:bg-primary/5" aria-label="Menu">
+        <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M3 12h18M3 6h18M3 18h18" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden lg:hidden border-t border-primary/5 bg-white">
+    <nav class="container-content py-4 flex flex-col gap-1">
+      {navItems.map(item => (
+        <a
+          href={`${base}${prefix}${item.href}`}
+          class={`px-4 py-3 rounded-lg text-sm font-medium ${
+            isActive(item)
+              ? 'text-accent-dark bg-accent/10'
+              : 'text-primary/70 hover:bg-primary/5'
+          }`}
+        >
+          {lang === 'zh' ? item.zh : item.en}
+        </a>
+      ))}
+    </nav>
+  </div>
+</header>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  btn?.addEventListener('click', () => menu?.classList.toggle('hidden'));
+</script>

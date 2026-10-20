@@ -1,0 +1,50 @@
+---
+interface Props {
+  pub: any;
+  lang: 'zh' | 'en';
+}
+const { pub, lang } = Astro.props;
+
+// 统一 base 前缀
+const base = import.meta.env.BASE_URL;
+
+// 智能处理链接：外链原样返回，本地绝对路径加 base
+const link = (url) => {
+  if (!url) return url;
+  const s = String(url);
+  if (/^(https?:|mailto:|tel:)/i.test(s)) return s;
+  return `${base}${s.replace(/^\//, '')}`;
+};
+
+const authorList = Array.isArray(pub.authors) ? pub.authors.join(', ') : pub.authors;
+---
+
+<article class={`card card-hover p-6 ${pub.highlight ? 'border-l-4 border-accent' : ''}`}>
+  <div class="flex items-start justify-between gap-4 mb-2">
+    <span class="text-sm font-bold text-accent-dark">{pub.year}</span>
+    <div class="flex gap-1.5 flex-wrap justify-end">
+      {pub.tags?.map(tag => <span class="tag text-xs">{tag}</span>)}
+    </div>
+  </div>
+  <h3 class="text-lg font-serif font-bold text-primary mb-2 leading-snug">
+    {pub.title}
+  </h3>
+  <p class="text-sm text-primary/60 mb-1">{authorList}</p>
+  <p class="text-sm text-primary/50 mb-3 italic">
+    {pub.venue}{pub.volume ? `, ${pub.volume}` : ''}{pub.pages ? `:${pub.pages}` : ''}
+  </p>
+  {pub.summary && (
+    <p class="text-sm text-primary/70 mb-3 leading-relaxed">
+      {lang === 'zh' ? pub.summary.zh : pub.summary.en}
+    </p>
+  )}
+  <div class="flex flex-wrap gap-3 text-sm">
+    <!-- 使用 link() 处理，确保本地 PDF 或 Data 路径正确 -->
+    {pub.doi && <a href={link(pub.doi)} class="link-accent" target="_blank" rel="noopener">DOI</a>}
+    {pub.pdf && <a href={link(pub.pdf)} class="link-accent" target="_blank" rel="noopener">PDF</a>}
+    {pub.code && <a href={link(pub.code)} class="link-accent" target="_blank" rel="noopener">Code</a>}
+    {pub.data && <a href={link(pub.data)} class="link-accent" target="_blank" rel="noopener">Data</a>}
+    {pub.pubmed && <a href={link(pub.pubmed)} class="link-accent" target="_blank" rel="noopener">PubMed</a>}
+    {pub.scholar && <a href={link(pub.scholar)} class="link-accent" target="_blank" rel="noopener">Scholar</a>}
+  </div>
+</article>
