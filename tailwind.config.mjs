@@ -34,7 +34,7 @@ export default {
         'card-hover': '0 8px 24px rgba(11, 31, 51, 0.12)',
       },
       maxWidth: {
-        content: '1280px',
+        content: '1200px',
       },
     },
   },

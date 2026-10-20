@@ -19,8 +19,8 @@ function yamlPlugin() {
 }
 
 export default defineConfig({
-  site: 'https://predictive-coding-lab.github.io',
-  base: '/',
+  site: 'https://jeffyang123.github.io',
+  base: '/hongyu-meng/',
   integrations: [
     tailwind({ applyBaseStyles: false }),
   ],
