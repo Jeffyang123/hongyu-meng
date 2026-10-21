@@ -11,9 +11,20 @@ const lang = 'zh';
 // 统一 base 前缀，解决 GitHub Pages 路径问题
 const base = import.meta.env.BASE_URL;
 const asset = (p) => (p ? `${base}${String(p).replace(/^\//, '')}` : p);
+const link = (url) => {
+  if (!url) return url;
+  const s = String(url);
+  if (/^(https?:|mailto:|tel:)/i.test(s)) return s;
+  return `${base}${s.replace(/^\//, '')}`;
+};
 
 const pi = membersData[0];
-const teamMembers = membersData.filter(m => m.status === 'current' && m.id !== pi.id);
+
+// 首页团队成员：只取 featured === true 的当前成员（不含 PI），最多 6 位
+const teamMembers = membersData
+  .filter(m => m.status === 'current' && m.featured === true && m.id !== pi.id)
+  .slice(0, 6);
+
 const recentPubs = publicationsData.slice(0, 5);
 const recentNews = [...newsData].sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 5);
 
@@ -145,8 +156,8 @@ const newsTypeLabels = { paper: '论文', join: '加入', recruit: '招生', con
             <p class="member-row-research">{pi.research.zh}</p>
           </div>
         </div>
-        <!-- Member rows -->
-        {teamMembers.slice(0, 8).map(m => (
+        <!-- Member rows (featured only) -->
+        {teamMembers.map(m => (
           <div class="member-row px-4">
             <img src={asset(m.photo)} alt={m.name.zh} class="member-row-photo" onerror={`this.src='${base}images/people/placeholder.svg'`}/>
             <div class="member-row-body">
@@ -181,7 +192,7 @@ const newsTypeLabels = { paper: '论文', join: '加入', recruit: '招生', con
               <span class="text-primary/40 text-xs ml-2">— {Array.isArray(pub.authors) ? pub.authors.join(', ') : pub.authors}</span>
             </span>
             <span class="list-row-meta italic">{pub.venue}</span>
-            {pub.doi && <a href={pub.doi} class="text-accent-dark hover:text-accent text-sm shrink-0" target="_blank" rel="noopener">DOI →</a>}
+            {pub.doi && <a href={link(pub.doi)} class="text-accent-dark hover:text-accent text-sm shrink-0" target="_blank" rel="noopener">DOI →</a>}
           </div>
         ))}
       </div>
@@ -229,7 +240,7 @@ const newsTypeLabels = { paper: '论文', join: '加入', recruit: '招生', con
             <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
           </a>
         </div>
-        <!-- 移除了原有的 .svg 假图，替换为真实的展板图（可选，如果没有请把整个 div 删掉） -->
+        <!-- 替换为真实的展板图（可选，如果没有请把整个 div 删掉） -->
         <div class="rounded-2xl overflow-hidden shadow-2xl border border-white/10 bg-white/5">
           <img src={asset('/images/research/screen-banner.jpg')} alt="课题组展板" class="w-full h-auto object-cover" onerror="this.parentElement.style.display='none'"/>
         </div>
