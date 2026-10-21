@@ -66,31 +66,35 @@ const currentMembers = membersData.filter(m => m.status === 'current' && m.id !=
     </div>
   </section>
 
-  <!-- Members (统一为卡片网格，带简介) -->
+  <!-- Members (one-line-per-person, but each row is a card) -->
   <section class="py-16 bg-white border-y border-primary/5">
     <div class="container-content">
       <h2 class="section-title">Lab Members</h2>
       <p class="section-subtitle">Current members</p>
       
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+      <div class="flex flex-col gap-4 mt-8">
         {currentMembers.map(m => (
-          <div class="card p-6 flex flex-col items-center text-center">
+          <div class="card p-6 flex flex-row items-start gap-6">
             <img 
               src={asset(m.photo)} 
               alt={m.name.en} 
-              class="w-24 h-24 rounded-full object-cover shadow-sm mb-4" 
+              class="w-24 h-24 rounded-2xl object-cover shadow-sm shrink-0" 
               onerror={`this.src='${base}images/people/placeholder.svg'`}
             />
-            <h3 class="text-lg font-serif font-bold text-primary mb-1">{m.name.en}</h3>
-            <p class="text-sm text-accent-dark font-medium mb-3">{m.role.en}</p>
-            
-            <p class="text-sm text-primary/60 mb-3">{m.research?.en}</p>
-            
-            {m.bio && m.showBio !== false && m.bio.en && (
-              <p class="text-xs text-primary/50 leading-relaxed mt-2 w-full text-left">
-                {m.bio.en}
-              </p>
-            )}
+            <div class="flex-1">
+              <div class="flex items-center gap-3 mb-2">
+                <h3 class="text-xl font-serif font-bold text-primary">{m.name.en}</h3>
+                <span class="text-sm text-accent-dark font-medium">{m.role.en}</span>
+              </div>
+              <p class="text-sm text-primary/60 mb-2">{m.research?.en}</p>
+              
+              {m.bio && m.showBio !== false && m.bio.en && (
+                <p class="text-sm text-primary/50 leading-relaxed mt-2">
+                  {m.bio.en}
+                </p>
+              )}
+            </div>
+            {m.links?.email && <a href={`mailto:${m.links.email}`} class="text-primary/40 hover:text-accent mt-2 shrink-0">✉</a>}
           </div>
         ))}
       </div>
