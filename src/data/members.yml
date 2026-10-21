@@ -51,14 +51,14 @@
 
 - id: member-03
   name: { zh: 杨元平, en: Yuanping Yang }
-  role: { zh: 研究助理, en: Research Assistant }
+  role: { zh: 研究助理/实验室管家, en: Research Assistant/Lab Manager }
   photo: /images/people/4.png
   research:
     zh: 脉冲神经网络、具身智能
     en: Spiking neural networks, embodied intelligence
   bio:
-    zh: 主要研究方向为脉冲神经网络与具身智能，探索生物启发的时空信息处理机制及其在机器人感知与决策中的应用。
-    en: Research focuses on spiking neural networks and embodied intelligence, exploring biologically inspired spatiotemporal information processing mechanisms and their applications in robotic perception and decision-making.
+    zh: 主要研究方向为数学算法与脉冲神经网络、具身智能，探索生物启发的时空信息处理机制及其在机器人感知与决策中的应用。
+    en: Research focuses on mathematical algorithms, spiking neural networks, and embodied intelligence, exploring biologically inspired spatiotemporal information processing mechanisms and their applications in robotic perception and decision-making.
   links: { scholar: "", github: "", orcid: "", email: "" }
   status: current
   featured: true
@@ -102,11 +102,11 @@
   role: { zh: 实习生, en: Research Intern }
   photo: /images/people/7.png
   research:
-    zh: 预测编码建模
-    en: Predictive coding modeling
+    zh: 人工智能算法优化
+    en: Artificial intelligence algorithm optimization
   bio:
-    zh: 研究方向占位，请替换为真实信息。
-    en: Placeholder bio, please replace with real information.
+    zh: 华南农业大学计算机学士、澳门科技大学资讯科学硕士研究生，2026年9月起加入课题组实习
+    en: B.S. in Computer Science, South China Agricultural University; M.S. candidate in Information Science, Macau University of Science and Technology. Joined the research group as an intern since September 2026.
   links: { scholar: "", github: "", orcid: "", email: "" }
   status: current
   featured: true
@@ -118,11 +118,11 @@
   role: { zh: 实习生, en: Research Intern }
   photo: /images/people/8.png
   research:
-    zh: 具身智能验证
-    en: Embodied intelligence validation
+    zh: 预测编码与模型训练
+    en: Predictive coding and model training
   bio:
-    zh: 研究方向占位，请替换为真实信息。
-    en: Placeholder bio, please replace with real information.
+    zh: 上海体育大学心理学学士，澳门大学认知神经科学硕士研究生，2026年10月加入课题组实习。
+    en: B.S. in Psychology, Shanghai University of Sport; M.S. candidate in Cognitive Neuroscience, University of Macau. Joined the research group as an intern in October 2026.
   links: { scholar: "", github: "", orcid: "", email: "" }
   status: current
   featured: true
