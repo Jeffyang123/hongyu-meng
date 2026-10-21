@@ -38,12 +38,11 @@
   role: { zh: 研究助理, en: Research Assistant }
   photo: /images/people/3.png
   research:
-    zh: 预测编码、类脑智能
-    en: Predictive coding, brain-inspired intelligence
+    zh: 神经元电生理、皮层层级结构、计算神经科学
+    en: Neuronal electrophysiology, cortical hierarchy, computational neuroscience
   bio:
-    zh: 主要研究方向为预测编码理论与类脑智能算法，关注大脑信息处理的层级预测机制及其在计算模型中的应用。
-    en: Research focuses on predictive coding theory and brain-inspired intelligence algorithms, exploring hierarchical predictive mechanisms of brain information processing.
-  links: { scholar: "", github: "", orcid: "", email: "" }
+    zh: 主要研究神经元内在电生理特性的生物物理机制及大脑皮层层级组织的分子基础。结合 Patch-seq、计算建模与跨物种转录组分析，探索离子通道对神经元动力学的调控，以及不同细胞类型的基因表达沿皮层层级的变化规律。
+    en: Research focuses on the biophysical mechanisms of intrinsic neuronal properties and the molecular basis of cortical hierarchy. By integrating Patch-seq, computational modeling, and cross-species transcriptomic analysis, the work investigates how ion channels shape neuronal dynamics and how cell-type-specific gene expression varies along cortical hierarchy.
   status: current
   featured: true
   showBio: true
