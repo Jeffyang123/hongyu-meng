@@ -66,31 +66,37 @@ const currentMembers = membersData.filter(m => m.status === 'current' && m.id !=
     </div>
   </section>
 
-  <!-- Members (Grid Layout with Bios) -->
+  <!-- Members (one-line-per-person with Bios) -->
   <section class="py-16 bg-white border-y border-primary/5">
     <div class="container-content">
       <h2 class="section-title">组成员</h2>
       <p class="section-subtitle">Lab Members</p>
       
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+      <div class="card p-5 lg:p-8 mt-8">
         {currentMembers.map(m => (
-          <div class="card p-6 flex flex-col items-center text-center">
+          <div class="member-row px-4 py-4 items-start border-b border-primary/5 last:border-0">
             <img 
               src={asset(m.photo)} 
               alt={m.name.zh} 
-              class="w-24 h-24 rounded-full object-cover shadow-sm mb-4" 
+              class="member-row-photo mt-1" 
               onerror={`this.src='${base}images/people/placeholder.svg'`}
             />
-            <h3 class="text-lg font-serif font-bold text-primary mb-1">{m.name.zh}</h3>
-            <p class="text-sm text-accent-dark font-medium mb-3">{m.role.zh}</p>
-            
-            <p class="text-sm text-primary/60 mb-3">{m.research?.zh}</p>
-            
-            {m.bio && m.showBio !== false && (
-              <p class="text-xs text-primary/50 leading-relaxed mt-2">
-                {m.bio.zh}
-              </p>
-            )}
+            <div class="member-row-body">
+              <div class="member-row-head mb-1">
+                <span class="member-row-name">{m.name.zh}</span>
+                <span class="member-row-role">{m.role.zh}</span>
+              </div>
+              
+              <p class="text-sm text-primary/70 font-medium mb-1">{m.research?.zh}</p>
+              
+              <!-- 展示 bio -->
+              {m.bio && m.showBio !== false && m.bio.zh && (
+                <p class="text-xs text-primary/50 leading-relaxed mt-2">
+                  {m.bio.zh}
+                </p>
+              )}
+            </div>
+            {m.links?.email && <a href={`mailto:${m.links.email}`} class="member-row-action mt-2">✉</a>}
           </div>
         ))}
       </div>

@@ -146,26 +146,33 @@ const newsTypeLabels = { paper: '论文', join: '加入', recruit: '招生', con
       </div>
       <div class="card p-5 lg:p-8">
         <!-- PI row -->
-        <div class="member-row rounded-xl px-4 bg-accent/5">
-          <img src={asset(pi.photo)} alt={pi.name.zh} class="member-row-photo" onerror={`this.src='${base}images/people/placeholder.svg'`}/>
+        <div class="member-row rounded-xl px-4 py-4 items-start bg-accent/5">
+          <img src={asset(pi.photo)} alt={pi.name.zh} class="member-row-photo mt-1" onerror={`this.src='${base}images/people/placeholder.svg'`}/>
           <div class="member-row-body">
-            <div class="member-row-head">
+            <div class="member-row-head mb-1">
               <span class="member-row-name">{pi.name.zh}</span>
               <span class="member-row-role">PI · {pi.role.zh}</span>
             </div>
-            <p class="member-row-research">{pi.research.zh}</p>
+            <p class="text-sm text-primary/70 font-medium mb-1">{pi.research.zh}</p>
+            {pi.bio?.zh && <p class="text-xs text-primary/50 leading-relaxed mt-1">{pi.bio.zh}</p>}
           </div>
         </div>
         <!-- Member rows (featured only) -->
         {teamMembers.map(m => (
-          <div class="member-row px-4">
-            <img src={asset(m.photo)} alt={m.name.zh} class="member-row-photo" onerror={`this.src='${base}images/people/placeholder.svg'`}/>
+          <div class="member-row px-4 py-4 items-start">
+            <img src={asset(m.photo)} alt={m.name.zh} class="member-row-photo mt-1" onerror={`this.src='${base}images/people/placeholder.svg'`}/>
             <div class="member-row-body">
-              <div class="member-row-head">
+              <div class="member-row-head mb-1">
                 <span class="member-row-name">{m.name.zh}</span>
                 <span class="member-row-role">{m.role.zh}</span>
               </div>
-              <p class="member-row-research">{m.research?.zh}</p>
+              <p class="text-sm text-primary/70 font-medium mb-1">{m.research?.zh}</p>
+              <!-- 展示 bio -->
+              {m.bio?.zh && (
+                <p class="text-xs text-primary/50 leading-relaxed mt-1">
+                  {m.bio.zh}
+                </p>
+              )}
             </div>
           </div>
         ))}
